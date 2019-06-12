@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.my.ssm.sys.dao.OperationLogMapper" >
+  <resultMap id="BaseResultMap" type="com.my.ssm.sys.model.OperationLog" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="CORP_ID" property="corpId" jdbcType="BIGINT" />
+    <result column="CORP" property="corp" jdbcType="VARCHAR" />
+    <result column="ORGN_ID" property="orgnId" jdbcType="BIGINT" />
+    <result column="ORGN" property="orgn" jdbcType="VARCHAR" />
+    <result column="USER_CODE" property="userCode" jdbcType="VARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="OPER_DATE" property="operDate" jdbcType="TIMESTAMP" />
+    <result column="OPER_MODULE_CODE" property="operModuleCode" jdbcType="VARCHAR" />
+    <result column="OPER_MODULE_DESC" property="operModuleDesc" jdbcType="VARCHAR" />
+    <result column="OPER_MENU_CODE" property="operMenuCode" jdbcType="VARCHAR" />
+    <result column="OPER_MENU_DESC" property="operMenuDesc" jdbcType="VARCHAR" />
+    <result column="OPER_METHOD" property="operMethod" jdbcType="VARCHAR" />
+    <result column="OPER_DESC" property="operDesc" jdbcType="VARCHAR" />
+    <result column="COMPARE_INF" property="compareInf" jdbcType="VARCHAR" />
+    <result column="OPER_IP" property="operIp" jdbcType="VARCHAR" />
+    <result column="BROWSER_TYPE" property="browserType" jdbcType="VARCHAR" />
+    <result column="BROWSER_VERSION" property="browserVersion" jdbcType="VARCHAR" />
+    <result column="RESULT_MSG" property="resultMsg" jdbcType="VARCHAR" />
+    <result column="UDF01" property="udf01" jdbcType="VARCHAR" />
+    <result column="UDF02" property="udf02" jdbcType="VARCHAR" />
+    <result column="UDF03" property="udf03" jdbcType="VARCHAR" />
+    <result column="UDF04" property="udf04" jdbcType="VARCHAR" />
+    <result column="UDF05" property="udf05" jdbcType="VARCHAR" />
+    <result column="RD" property="rd" jdbcType="VARCHAR" />
+    <result column="ACTIVE_FLAG" property="activeFlag" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CREATED_BY" property="createdBy" jdbcType="VARCHAR" />
+    <result column="CREATED_DATE" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="MODIFIED_BY" property="modifiedBy" jdbcType="VARCHAR" />
+    <result column="MODIFIED_DATE" property="modifiedDate" jdbcType="TIMESTAMP" />
+    <result column="SAASID" property="saasid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CORP_ID, CORP, ORGN_ID, ORGN, USER_CODE, USER_NAME, OPER_DATE, OPER_MODULE_CODE, 
+    OPER_MODULE_DESC, OPER_MENU_CODE, OPER_MENU_DESC, OPER_METHOD, OPER_DESC, COMPARE_INF, 
+    OPER_IP, BROWSER_TYPE, BROWSER_VERSION, RESULT_MSG, UDF01, UDF02, UDF03, UDF04, UDF05, 
+    RD, ACTIVE_FLAG, REMARK, CREATED_BY, CREATED_DATE, MODIFIED_BY, MODIFIED_DATE, SAASID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_operation_log
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_operation_log
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.my.ssm.sys.model.OperationLog" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_operation_log (CORP_ID, CORP, ORGN_ID, 
+      ORGN, USER_CODE, USER_NAME, 
+      OPER_DATE, OPER_MODULE_CODE, OPER_MODULE_DESC, 
+      OPER_MENU_CODE, OPER_MENU_DESC, OPER_METHOD, 
+      OPER_DESC, COMPARE_INF, OPER_IP, 
+      BROWSER_TYPE, BROWSER_VERSION, RESULT_MSG, 
+      UDF01, UDF02, UDF03, 
+      UDF04, UDF05, RD, ACTIVE_FLAG, 
+      REMARK, CREATED_BY, CREATED_DATE, 
+      MODIFIED_BY, MODIFIED_DATE, SAASID
+      )
+    values (#{corpId,jdbcType=BIGINT}, #{corp,jdbcType=VARCHAR}, #{orgnId,jdbcType=BIGINT}, 
+      #{orgn,jdbcType=VARCHAR}, #{userCode,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{operDate,jdbcType=TIMESTAMP}, #{operModuleCode,jdbcType=VARCHAR}, #{operModuleDesc,jdbcType=VARCHAR}, 
+      #{operMenuCode,jdbcType=VARCHAR}, #{operMenuDesc,jdbcType=VARCHAR}, #{operMethod,jdbcType=VARCHAR}, 
+      #{operDesc,jdbcType=VARCHAR}, #{compareInf,jdbcType=VARCHAR}, #{operIp,jdbcType=VARCHAR}, 
+      #{browserType,jdbcType=VARCHAR}, #{browserVersion,jdbcType=VARCHAR}, #{resultMsg,jdbcType=VARCHAR}, 
+      #{udf01,jdbcType=VARCHAR}, #{udf02,jdbcType=VARCHAR}, #{udf03,jdbcType=VARCHAR}, 
+      #{udf04,jdbcType=VARCHAR}, #{udf05,jdbcType=VARCHAR}, #{rd,jdbcType=VARCHAR}, #{activeFlag,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, 
+      #{modifiedBy,jdbcType=VARCHAR}, #{modifiedDate,jdbcType=TIMESTAMP}, #{saasid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.my.ssm.sys.model.OperationLog" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_operation_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="corpId != null" >
+        CORP_ID,
+      </if>
+      <if test="corp != null" >
+        CORP,
+      </if>
+      <if test="orgnId != null" >
+        ORGN_ID,
+      </if>
+      <if test="orgn != null" >
+        ORGN,
+      </if>
+      <if test="userCode != null" >
+        USER_CODE,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="operDate != null" >
+        OPER_DATE,
+      </if>
+      <if test="operModuleCode != null" >
+        OPER_MODULE_CODE,
+      </if>
+      <if test="operModuleDesc != null" >
+        OPER_MODULE_DESC,
+      </if>
+      <if test="operMenuCode != null" >
+        OPER_MENU_CODE,
+      </if>
+      <if test="operMenuDesc != null" >
+        OPER_MENU_DESC,
+      </if>
+      <if test="operMethod != null" >
+        OPER_METHOD,
+      </if>
+      <if test="operDesc != null" >
+        OPER_DESC,
+      </if>
+      <if test="compareInf != null" >
+        COMPARE_INF,
+      </if>
+      <if test="operIp != null" >
+        OPER_IP,
+      </if>
+      <if test="browserType != null" >
+        BROWSER_TYPE,
+      </if>
+      <if test="browserVersion != null" >
+        BROWSER_VERSION,
+      </if>
+      <if test="resultMsg != null" >
+        RESULT_MSG,
+      </if>
+      <if test="udf01 != null" >
+        UDF01,
+      </if>
+      <if test="udf02 != null" >
+        UDF02,
+      </if>
+      <if test="udf03 != null" >
+        UDF03,
+      </if>
+      <if test="udf04 != null" >
+        UDF04,
+      </if>
+      <if test="udf05 != null" >
+        UDF05,
+      </if>
+      <if test="rd != null" >
+        RD,
+      </if>
+      <if test="activeFlag != null" >
+        ACTIVE_FLAG,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY,
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE,
+      </if>
+      <if test="modifiedBy != null" >
+        MODIFIED_BY,
+      </if>
+      <if test="modifiedDate != null" >
+        MODIFIED_DATE,
+      </if>
+      <if test="saasid != null" >
+        SAASID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="corpId != null" >
+        #{corpId,jdbcType=BIGINT},
+      </if>
+      <if test="corp != null" >
+        #{corp,jdbcType=VARCHAR},
+      </if>
+      <if test="orgnId != null" >
+        #{orgnId,jdbcType=BIGINT},
+      </if>
+      <if test="orgn != null" >
+        #{orgn,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null" >
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="operDate != null" >
+        #{operDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operModuleCode != null" >
+        #{operModuleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operModuleDesc != null" >
+        #{operModuleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="operMenuCode != null" >
+        #{operMenuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operMenuDesc != null" >
+        #{operMenuDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="operMethod != null" >
+        #{operMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="operDesc != null" >
+        #{operDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="compareInf != null" >
+        #{compareInf,jdbcType=VARCHAR},
+      </if>
+      <if test="operIp != null" >
+        #{operIp,jdbcType=VARCHAR},
+      </if>
+      <if test="browserType != null" >
+        #{browserType,jdbcType=VARCHAR},
+      </if>
+      <if test="browserVersion != null" >
+        #{browserVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="resultMsg != null" >
+        #{resultMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="udf01 != null" >
+        #{udf01,jdbcType=VARCHAR},
+      </if>
+      <if test="udf02 != null" >
+        #{udf02,jdbcType=VARCHAR},
+      </if>
+      <if test="udf03 != null" >
+        #{udf03,jdbcType=VARCHAR},
+      </if>
+      <if test="udf04 != null" >
+        #{udf04,jdbcType=VARCHAR},
+      </if>
+      <if test="udf05 != null" >
+        #{udf05,jdbcType=VARCHAR},
+      </if>
+      <if test="rd != null" >
+        #{rd,jdbcType=VARCHAR},
+      </if>
+      <if test="activeFlag != null" >
+        #{activeFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null" >
+        #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedDate != null" >
+        #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saasid != null" >
+        #{saasid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.my.ssm.sys.model.OperationLog" >
+    update sys_operation_log
+    <set >
+      <if test="corpId != null" >
+        CORP_ID = #{corpId,jdbcType=BIGINT},
+      </if>
+      <if test="corp != null" >
+        CORP = #{corp,jdbcType=VARCHAR},
+      </if>
+      <if test="orgnId != null" >
+        ORGN_ID = #{orgnId,jdbcType=BIGINT},
+      </if>
+      <if test="orgn != null" >
+        ORGN = #{orgn,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null" >
+        USER_CODE = #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="operDate != null" >
+        OPER_DATE = #{operDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operModuleCode != null" >
+        OPER_MODULE_CODE = #{operModuleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operModuleDesc != null" >
+        OPER_MODULE_DESC = #{operModuleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="operMenuCode != null" >
+        OPER_MENU_CODE = #{operMenuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operMenuDesc != null" >
+        OPER_MENU_DESC = #{operMenuDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="operMethod != null" >
+        OPER_METHOD = #{operMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="operDesc != null" >
+        OPER_DESC = #{operDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="compareInf != null" >
+        COMPARE_INF = #{compareInf,jdbcType=VARCHAR},
+      </if>
+      <if test="operIp != null" >
+        OPER_IP = #{operIp,jdbcType=VARCHAR},
+      </if>
+      <if test="browserType != null" >
+        BROWSER_TYPE = #{browserType,jdbcType=VARCHAR},
+      </if>
+      <if test="browserVersion != null" >
+        BROWSER_VERSION = #{browserVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="resultMsg != null" >
+        RESULT_MSG = #{resultMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="udf01 != null" >
+        UDF01 = #{udf01,jdbcType=VARCHAR},
+      </if>
+      <if test="udf02 != null" >
+        UDF02 = #{udf02,jdbcType=VARCHAR},
+      </if>
+      <if test="udf03 != null" >
+        UDF03 = #{udf03,jdbcType=VARCHAR},
+      </if>
+      <if test="udf04 != null" >
+        UDF04 = #{udf04,jdbcType=VARCHAR},
+      </if>
+      <if test="udf05 != null" >
+        UDF05 = #{udf05,jdbcType=VARCHAR},
+      </if>
+      <if test="rd != null" >
+        RD = #{rd,jdbcType=VARCHAR},
+      </if>
+      <if test="activeFlag != null" >
+        ACTIVE_FLAG = #{activeFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null" >
+        MODIFIED_BY = #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedDate != null" >
+        MODIFIED_DATE = #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saasid != null" >
+        SAASID = #{saasid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.my.ssm.sys.model.OperationLog" >
+    update sys_operation_log
+    set CORP_ID = #{corpId,jdbcType=BIGINT},
+      CORP = #{corp,jdbcType=VARCHAR},
+      ORGN_ID = #{orgnId,jdbcType=BIGINT},
+      ORGN = #{orgn,jdbcType=VARCHAR},
+      USER_CODE = #{userCode,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      OPER_DATE = #{operDate,jdbcType=TIMESTAMP},
+      OPER_MODULE_CODE = #{operModuleCode,jdbcType=VARCHAR},
+      OPER_MODULE_DESC = #{operModuleDesc,jdbcType=VARCHAR},
+      OPER_MENU_CODE = #{operMenuCode,jdbcType=VARCHAR},
+      OPER_MENU_DESC = #{operMenuDesc,jdbcType=VARCHAR},
+      OPER_METHOD = #{operMethod,jdbcType=VARCHAR},
+      OPER_DESC = #{operDesc,jdbcType=VARCHAR},
+      COMPARE_INF = #{compareInf,jdbcType=VARCHAR},
+      OPER_IP = #{operIp,jdbcType=VARCHAR},
+      BROWSER_TYPE = #{browserType,jdbcType=VARCHAR},
+      BROWSER_VERSION = #{browserVersion,jdbcType=VARCHAR},
+      RESULT_MSG = #{resultMsg,jdbcType=VARCHAR},
+      UDF01 = #{udf01,jdbcType=VARCHAR},
+      UDF02 = #{udf02,jdbcType=VARCHAR},
+      UDF03 = #{udf03,jdbcType=VARCHAR},
+      UDF04 = #{udf04,jdbcType=VARCHAR},
+      UDF05 = #{udf05,jdbcType=VARCHAR},
+      RD = #{rd,jdbcType=VARCHAR},
+      ACTIVE_FLAG = #{activeFlag,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      MODIFIED_BY = #{modifiedBy,jdbcType=VARCHAR},
+      MODIFIED_DATE = #{modifiedDate,jdbcType=TIMESTAMP},
+      SAASID = #{saasid,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

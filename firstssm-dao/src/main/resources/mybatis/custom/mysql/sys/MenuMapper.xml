@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.ssm.sys.dao.MenuMapper">
+
+	<!-- ExtBaseResultMap -->
+	<resultMap id="ExtBaseResultMap" type="com.my.ssm.sys.pojo.MenuPojo" extends="BaseResultMap">
+	    <result column="OPERION_CODE" property="operionCode" jdbcType="VARCHAR" />
+   	 	<result column="OPERION_NAME" property="operionName" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- page -->
+	<select id="page" resultMap="BaseResultMap" parameterType="com.my.ssm.sys.search.MenuSearch">
+        <![CDATA[${PAGE_HEAD}]]>
+		select
+		<include refid="Base_Column_List" />
+		from sys_menu
+		<include refid="where" />
+		order by MODULE_CODE,MENU_SORT
+        <![CDATA[${PAGE_FOOT}]]>
+	</select>
+	
+	<!-- count -->
+	<select id="count" resultType="java.lang.Long" parameterType="com.my.ssm.sys.search.MenuSearch">
+		select count(*) FROM sys_menu
+		<include refid="where" />
+	</select>
+	
+	<!-- pageExt -->
+	<select id="pageExt" resultMap="ExtBaseResultMap" parameterType="com.my.ssm.sys.search.MenuSearch">
+        <![CDATA[${PAGE_HEAD}]]>
+		select
+		<include refid="Base_Column_List" />
+		from sys_menu
+		<include refid="whereExt" />
+		order by MENU_SORT
+        <![CDATA[${PAGE_FOOT}]]>
+	</select>
+	
+	<!-- countExt -->
+	<select id="countExt" resultType="java.lang.Long" parameterType="com.my.ssm.sys.search.MenuSearch">
+		select count(*) FROM sys_menu
+		<include refid="whereExt" />
+	</select>
+	
+	<!-- list -->
+	<select id="list" resultMap="BaseResultMap" parameterType="com.my.ssm.sys.search.MenuSearch">
+		select
+		<include refid="Base_Column_List" />
+		from sys_menu
+		<include refid="where" />
+		order by MENU_SORT
+	</select>
+	
+	<!-- listExt -->
+	<select id="listExt" resultMap="ExtBaseResultMap" parameterType="com.my.ssm.sys.search.MenuSearch">
+		select
+		<include refid="Base_Column_List" />
+		from sys_menu
+		<include refid="whereExt" />
+	</select>
+	
+	<!-- listExport -->
+	<select id="listExport" resultMap="BaseResultMap" parameterType="com.my.ssm.sys.search.MenuSearch">
+		select
+		<include refid="Base_Column_List" />
+		from sys_menu 
+		<include refid="where" />
+	</select>
+	
+	<!-- listExportExt -->
+	<select id="listExportExt" resultMap="ExtBaseResultMap" parameterType="com.my.ssm.sys.search.MenuSearch">
+		select
+		<include refid="Base_Column_List" />
+		from sys_menu 
+		<include refid="whereExt" />
+	</select>
+    
+    <!-- listMenu -->
+	<select id="listMenu" resultMap="ExtBaseResultMap" parameterType="com.my.ssm.sys.search.MenuSearch">
+		SELECT 
+			A.MODULE_CODE, A.MENU_CODE, A.MENU_NAME, 
+			'' AS OPERION_CODE, '' AS OPERION_NAME,
+			A.MENU_URL, A.MENU_ICON 
+		FROM SYS_MENU A
+		WHERE A.ACTIVE_FLAG = 'Y'
+		UNION ALL
+		SELECT 
+			C.MODULE_CODE, C.MENU_CODE, C.MENU_NAME,
+			B.FUNCTION_CODE AS OPERION_CODE, CONCAT(C.MENU_NAME,'-',B.FUNCTION_NAME) AS OPERION_NAME, 
+			B.FUNCTION_URL AS MENU_URL, B.FUNCTION_ICON AS MENU_ICON 
+		FROM SYS_FUNCTION_INF B
+		LEFT JOIN SYS_MENU C ON B.MENU_ID = C.ID
+		WHERE B.ACTIVE_FLAG = 'Y'
+	</select>
+    
+    <!-- selectExtByPrimaryKey -->
+    <select id="selectExtByPrimaryKey" resultMap="ExtBaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List" />
+        from sys_menu
+        where ID = #{id,jdbcType=BIGINT}
+    </select>
+    
+	<!-- selectByBizKey -->
+	<select id="selectByBizKey" resultMap="BaseResultMap" parameterType="com.my.ssm.sys.search.MenuSearch">
+		select
+		<include refid="Base_Column_List" />
+		from sys_menu
+		<include refid="whereByBizKey" />
+	</select>
+	
+	<!-- selectExtByBizKey -->
+    <select id="selectExtByBizKey" resultMap="BaseResultMap" parameterType="com.my.ssm.sys.search.MenuSearch">
+        select
+        <include refid="Base_Column_List" />
+        from sys_menu
+        <include refid="whereByBizKey" />
+    </select>
+    
+	<!-- deleteByBizKey -->
+	<delete id="deleteByBizKey" parameterType="com.my.ssm.sys.model.Menu">
+		delete from sys_menu
+		<include refid="whereByBizKey" />
+	</delete>
+	
+	<!-- bulkDelete -->
+	<delete id="bulkDelete" parameterType="java.util.List" >
+        delete from sys_menu
+        <where>
+	        <foreach collection="keyList" item="data" open="ID IN(" separator="," close=")">
+	            ${data.id}
+	        </foreach>
+        </where>
+    </delete>
+	
+	<!-- updateByBizKey -->
+    <update id="updateByBizKey" parameterType="com.my.ssm.sys.model.Menu">
+    	update sys_menu
+        <set>
+      		<if test="corpId != null " >
+        		CORP_ID = #{corpId,jdbcType=DECIMAL},
+      		</if>
+      		<if test="corp != null and corp != '' " >
+        		CORP = #{corp,jdbcType=VARCHAR},
+      		</if>
+      		<if test="orgnId != null " >
+        		ORGN_ID = #{orgnId,jdbcType=DECIMAL},
+      		</if>
+      		<if test="orgn != null and orgn != '' " >
+        		ORGN = #{orgn,jdbcType=VARCHAR},
+      		</if>
+      		<if test="moduleId != null " >
+        		MODULE_ID = #{moduleId,jdbcType=DECIMAL},
+      		</if>
+      		<if test="moduleCode != null and moduleCode != '' " >
+        		MODULE_CODE = #{moduleCode,jdbcType=VARCHAR},
+      		</if>
+      		<if test="menuIcon != null and menuIcon != '' " >
+        		MENU_ICON = #{menuIcon,jdbcType=VARCHAR},
+      		</if>
+      		<if test="menuCode != null and menuCode != '' " >
+        		MENU_CODE = #{menuCode,jdbcType=VARCHAR},
+      		</if>
+      		<if test="menuName != null and menuName != '' " >
+        		MENU_NAME = #{menuName,jdbcType=VARCHAR},
+      		</if>
+      		<if test="menuSort != null and menuSort != '' " >
+        		MENU_SORT = #{menuSort,jdbcType=VARCHAR},
+      		</if>
+      		<if test="sysUrl != null and sysUrl != '' " >
+        		SYS_URL = #{sysUrl,jdbcType=VARCHAR},
+      		</if>
+      		<if test="menuUrl != null and menuUrl != '' " >
+        		MENU_URL = #{menuUrl,jdbcType=VARCHAR},
+      		</if>
+      		<if test="parentId != null " >
+        		PARENT_ID = #{parentId,jdbcType=DECIMAL},
+      		</if>
+      		<if test="parentId == null " >
+        		PARENT_ID = null,
+      		</if>
+      		<if test="rd != null and rd != '' " >
+        		RD = #{rd,jdbcType=VARCHAR},
+      		</if>
+      		<if test="activeFlag != null and activeFlag != '' " >
+        		ACTIVE_FLAG = #{activeFlag,jdbcType=VARCHAR},
+      		</if>
+      		<if test="remark != null and remark != '' " >
+        		REMARK = #{remark,jdbcType=VARCHAR},
+      		</if>
+      		<if test="createdBy != null and createdBy != '' " >
+        		CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      		</if>
+      		<if test="createdDate != null " >
+        		CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      		</if>
+      		<if test="modifiedBy != null and modifiedBy != '' " >
+        		MODIFIED_BY = #{modifiedBy,jdbcType=VARCHAR},
+      		</if>
+      		<if test="modifiedDate != null " >
+        		MODIFIED_DATE = #{modifiedDate,jdbcType=TIMESTAMP},
+      		</if>
+      		<if test="saasid != null and saasid != '' " >
+        		SAASID = #{saasid,jdbcType=VARCHAR},
+      		</if>
+		</set>
+		<include refid="whereByBizKey" />
+    </update>
+	
+	<!-- listBaseModule -->
+	<select id="listBaseModule" resultMap="BaseResultMap" parameterType="com.my.ssm.sys.search.MenuSearch">
+		SELECT DISTINCT MODULE_CODE FROM SYS_MENU
+	</select>
+	
+	<!-- where -->
+	<sql id="where">
+		<where>
+      		<if test="searchParam != null and searchParam != ''">
+      			<bind name="menuNameLike" value="'%' + searchParam + '%'" />
+      			AND MENU_NAME like #{menuNameLike,jdbcType=VARCHAR}
+      		</if>
+      		<if test="moduleCode != null and moduleCode != '' " >
+        		AND MODULE_CODE = #{moduleCode,jdbcType=VARCHAR}
+      		</if>
+      		<if test="menuCode != null and menuCode != '' " >
+        		AND MENU_CODE = #{menuCode,jdbcType=VARCHAR}
+      		</if>
+      		<if test="isParent != null and isParent != '' " >
+      			<if test="isParent == '1'" >
+      				AND (PARENT_ID IS NULL OR PARENT_ID = "")
+      			</if>
+        		<if test="isParent == '0'" >
+      				AND NOT EXISTS (SELECT ID FROM SYS_MENU WHERE PARENT_ID = S.ID) 
+      			</if>
+      		</if>
+      		<if test="parentId != null " >
+        		AND PARENT_ID = #{parentId,jdbcType=DECIMAL}
+      		</if>
+		</where>
+	</sql>
+	
+	<!-- whereExt -->
+	<sql id="whereExt">
+		<where>
+      		<if test="moduleCode != null and moduleCode != '' " >
+        		AND MODULE_CODE = #{moduleCode,jdbcType=VARCHAR}
+      		</if>
+      		<if test="menuCode != null and menuCode != '' " >
+        		AND MENU_CODE = #{menuCode,jdbcType=VARCHAR}
+      		</if>
+      		<if test="isParent != null and isParent != '' " >
+        		AND (PARENT_ID IS NULL OR PARENT_ID = "")
+      		</if>
+		</where>
+	</sql>
+	
+	<!-- whereByBizKey -->
+	<sql id="whereByBizKey">
+		<where>
+      		<if test="moduleCode != null and moduleCode != '' " >
+        		AND MODULE_CODE = #{moduleCode,jdbcType=VARCHAR}
+      		</if>
+      		<if test="menuCode != null and menuCode != '' " >
+        		AND MENU_CODE = #{menuCode,jdbcType=VARCHAR}
+      		</if>
+      		<if test="isParent == '1' " >
+        		AND (PARENT_ID IS NULL OR PARENT_ID = "")
+      		</if>
+      		<if test="parentId != null " >
+        		AND PARENT_ID = #{parentId,jdbcType=DECIMAL}
+      		</if>
+		</where>
+	</sql>
+	
+</mapper>

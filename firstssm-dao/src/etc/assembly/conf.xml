@@ -1,0 +1,33 @@
+<assembly>
+    <id>conf</id>
+    <formats>
+        <format>jar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>src/main/resources/spring</directory>
+            <outputDirectory>/spring</outputDirectory>
+            <includes>
+                <include>*.*</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/resources/mybatis</directory>
+            <outputDirectory>/mybatis</outputDirectory>
+            <includes>
+                <include>mybatis-config.xml</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>*.properties</include>
+            </includes>
+            <excludes>
+                <exclude>log4j.properties</exclude>
+            </excludes>
+        </fileSet>
+    </fileSets>
+</assembly>

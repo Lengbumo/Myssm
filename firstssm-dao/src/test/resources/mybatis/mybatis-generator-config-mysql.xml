@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="mysqlTables" targetRuntime="MyBatis3">
+        <!-- 
+        <plugin type="org.mybatis.generator.plugins.VirtualPrimaryKeyPlugin" />
+        <plugin type="org.mybatis.generator.plugins.CachePlugin" />
+         -->
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="${generator.jdbcDriver}" connectionURL="${generator.jdbcUrl}" userId="${generator.username}" password="${generator.password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="${generator.packagePrefix}.model" targetProject="${generator.target}">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="${generator.xmlPrefix}" targetProject="${generator.target}">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${generator.packagePrefix}.dao" targetProject="${generator.target}">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+       
+       <!-- BASE_CUSTOMER -->
+       <!-- <table schema="${generator.schema}" tableName="BASE_CUSTOMER" domainObjectName="Customer" enableCountByExample="false" enableSelectByExample="false" enableUpdateByExample="false" enableDeleteByExample="false">
+            <property name="useActualColumnNames" value="false" />
+            <property name="virtualKeyColumns" value="ID" />
+            <property name="rootClass" value="com.sl.pt.core.model.impl.Model"/>
+            <generatedKey column="ID" sqlStatement="Mysql" identity="true" type="post" />
+            <columnOverride column="ID" javaType="java.lang.Long" />
+            <columnOverride column="CORP_ID" javaType="java.lang.Long" />
+            <columnOverride column="ORGN_ID" javaType="java.lang.Long" />
+            <columnOverride column="PARENT_ID" javaType="java.lang.Long" />
+            <columnOverride column="CREATED_DATE" jdbcType="TIMESTAMP" />
+            <columnOverride column="MODIFIED_DATE" jdbcType="TIMESTAMP" />
+       </table> -->
+       
+       <!-- SYS_USER -->
+       <!-- <table schema="${generator.schema}" tableName="SYS_USER" domainObjectName="User" enableCountByExample="false" enableSelectByExample="false" enableUpdateByExample="false" enableDeleteByExample="false">
+           <property name="useActualColumnNames" value="false" />
+           <property name="virtualKeyColumns" value="ID" />
+           <property name="rootClass" value="com.sl.pt.core.model.impl.Model"/>
+           <generatedKey column="ID" sqlStatement="Mysql" identity="true" type="post" />
+           <columnOverride column="ID" javaType="java.lang.Long" />
+           <columnOverride column="CORP_ID" javaType="java.lang.Long" />
+           <columnOverride column="ORGN_ID" javaType="java.lang.Long" />
+           <columnOverride column="DEP_ID" javaType="java.lang.Long" />
+           <columnOverride column="EMP_ID" javaType="java.lang.Long" />
+           <columnOverride column="PWD_MODIFY_DATE" jdbcType="TIMESTAMP" />
+           <columnOverride column="CREATED_DATE" jdbcType="TIMESTAMP" />
+           <columnOverride column="MODIFIED_DATE" jdbcType="TIMESTAMP" />
+       </table> -->
+       
+       <!-- SYS_MENU -->
+       <!-- <table schema="${generator.schema}" tableName="SYS_MENU" domainObjectName="Menu" enableCountByExample="false" enableSelectByExample="false" enableUpdateByExample="false" enableDeleteByExample="false">
+           <property name="useActualColumnNames" value="false" />
+           <property name="virtualKeyColumns" value="ID" />
+           <property name="rootClass" value="com.sl.pt.core.model.impl.Model"/>
+           <generatedKey column="ID" sqlStatement="Mysql" identity="true" type="post" />
+           <columnOverride column="ID" javaType="java.lang.Long" />
+           <columnOverride column="CORP_ID" javaType="java.lang.Long" />
+           <columnOverride column="ORGN_ID" javaType="java.lang.Long" />
+           <columnOverride column="CREATED_DATE" jdbcType="TIMESTAMP" />
+           <columnOverride column="MODIFIED_DATE" jdbcType="TIMESTAMP" />
+       </table> -->
+       
+       <!-- SYS_OPERATION_LOG -->
+       <!-- <table schema="${generator.schema}" tableName="SYS_OPERATION_LOG" domainObjectName="OperationLog" enableCountByExample="false" enableSelectByExample="false" enableUpdateByExample="false" enableDeleteByExample="false">
+           <property name="useActualColumnNames" value="false" />
+           <property name="virtualKeyColumns" value="ID" />
+           <property name="rootClass" value="com.sl.pt.core.model.impl.Model"/>
+           <generatedKey column="ID" sqlStatement="Mysql" identity="true" type="post" />
+           <columnOverride column="ID" javaType="java.lang.Long" />
+           <columnOverride column="CORP_ID" javaType="java.lang.Long" />
+           <columnOverride column="ORGN_ID" javaType="java.lang.Long" />
+           <columnOverride column="CREATED_DATE" jdbcType="TIMESTAMP" />
+           <columnOverride column="MODIFIED_DATE" jdbcType="TIMESTAMP" />
+       </table> -->
+      
+       <!-- SYS_FUNCTION_INF -->
+       <!-- <table schema="${generator.schema}" tableName="SYS_FUNCTION_INF" domainObjectName="FunctionInf" enableCountByExample="false" enableSelectByExample="false" enableUpdateByExample="false" enableDeleteByExample="false">
+           <property name="useActualColumnNames" value="false" />
+           <property name="virtualKeyColumns" value="ID" />
+           <property name="rootClass" value="com.sl.pt.core.model.impl.Model"/>
+           <generatedKey column="ID" sqlStatement="Mysql" identity="true" type="post" />
+           <columnOverride column="ID" javaType="java.lang.Long" />
+           <columnOverride column="CORP_ID" javaType="java.lang.Long" />
+           <columnOverride column="ORGN_ID" javaType="java.lang.Long" />
+           <columnOverride column="CREATED_DATE" jdbcType="TIMESTAMP" />
+           <columnOverride column="MODIFIED_DATE" jdbcType="TIMESTAMP" />
+       </table> -->
+       
+       <!-- SYS_OPERATION_LOG -->
+       <table schema="${generator.schema}" tableName="SYS_OPERATION_LOG" domainObjectName="OperationLog" enableCountByExample="false" enableSelectByExample="false" enableUpdateByExample="false" enableDeleteByExample="false">
+           <property name="useActualColumnNames" value="false" />
+           <property name="virtualKeyColumns" value="ID" />
+           <property name="rootClass" value="com.sl.pt.core.model.impl.Model"/>
+           <generatedKey column="ID" sqlStatement="Mysql" identity="true" type="post" />
+           <columnOverride column="ID" javaType="java.lang.Long" />
+           <columnOverride column="CORP_ID" javaType="java.lang.Long" />
+           <columnOverride column="ORGN_ID" javaType="java.lang.Long" />
+           <columnOverride column="OPER_DATE" javaType="TIMESTAMP" />
+           <columnOverride column="CREATED_DATE" jdbcType="TIMESTAMP" />
+           <columnOverride column="MODIFIED_DATE" jdbcType="TIMESTAMP" />
+       </table>
+       
+    </context>
+</generatorConfiguration>

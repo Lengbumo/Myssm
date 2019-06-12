@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.my.ssm.base.dao.CustomerClassMapper" >
+  <resultMap id="BaseResultMap" type="com.my.ssm.base.model.CustomerClass" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="CORP_ID" property="corpId" jdbcType="BIGINT" />
+    <result column="CORP" property="corp" jdbcType="VARCHAR" />
+    <result column="ORGN_ID" property="orgnId" jdbcType="BIGINT" />
+    <result column="ORGN" property="orgn" jdbcType="VARCHAR" />
+    <result column="CLS_CODE" property="clsCode" jdbcType="VARCHAR" />
+    <result column="CLS_NAME" property="clsName" jdbcType="VARCHAR" />
+    <result column="CLS_NAMEE" property="clsNamee" jdbcType="VARCHAR" />
+    <result column="CLS_DESCR" property="clsDescr" jdbcType="VARCHAR" />
+    <result column="CLS_DESCRE" property="clsDescre" jdbcType="VARCHAR" />
+    <result column="PARENT_ID" property="parentId" jdbcType="BIGINT" />
+    <result column="PARENT_CODE" property="parentCode" jdbcType="VARCHAR" />
+    <result column="CLS_LEVEL" property="clsLevel" jdbcType="VARCHAR" />
+    <result column="END_FLAG" property="endFlag" jdbcType="VARCHAR" />
+    <result column="UDF01" property="udf01" jdbcType="VARCHAR" />
+    <result column="UDF02" property="udf02" jdbcType="VARCHAR" />
+    <result column="UDF03" property="udf03" jdbcType="VARCHAR" />
+    <result column="UDF04" property="udf04" jdbcType="VARCHAR" />
+    <result column="UDF05" property="udf05" jdbcType="VARCHAR" />
+    <result column="UDF06" property="udf06" jdbcType="VARCHAR" />
+    <result column="UDF07" property="udf07" jdbcType="VARCHAR" />
+    <result column="UDF08" property="udf08" jdbcType="VARCHAR" />
+    <result column="UDF09" property="udf09" jdbcType="VARCHAR" />
+    <result column="UDF10" property="udf10" jdbcType="VARCHAR" />
+    <result column="UDF11" property="udf11" jdbcType="DECIMAL" />
+    <result column="UDF12" property="udf12" jdbcType="DECIMAL" />
+    <result column="UDF13" property="udf13" jdbcType="DECIMAL" />
+    <result column="UDF14" property="udf14" jdbcType="DECIMAL" />
+    <result column="UDF15" property="udf15" jdbcType="DECIMAL" />
+    <result column="UDF16" property="udf16" jdbcType="BIGINT" />
+    <result column="UDF17" property="udf17" jdbcType="BIGINT" />
+    <result column="UDF18" property="udf18" jdbcType="BIGINT" />
+    <result column="UDF19" property="udf19" jdbcType="BIGINT" />
+    <result column="UDF20" property="udf20" jdbcType="BIGINT" />
+    <result column="UDF21" property="udf21" jdbcType="TIMESTAMP" />
+    <result column="UDF22" property="udf22" jdbcType="TIMESTAMP" />
+    <result column="UDF23" property="udf23" jdbcType="TIMESTAMP" />
+    <result column="UDF24" property="udf24" jdbcType="TIMESTAMP" />
+    <result column="UDF25" property="udf25" jdbcType="TIMESTAMP" />
+    <result column="TS" property="ts" jdbcType="TIMESTAMP" />
+    <result column="RD" property="rd" jdbcType="VARCHAR" />
+    <result column="ACTIVE_FLAG" property="activeFlag" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CREATED_BY" property="createdBy" jdbcType="VARCHAR" />
+    <result column="CREATED_DATE" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="MODIFIED_BY" property="modifiedBy" jdbcType="VARCHAR" />
+    <result column="MODIFIED_DATE" property="modifiedDate" jdbcType="TIMESTAMP" />
+    <result column="SAASID" property="saasid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CORP_ID, CORP, ORGN_ID, ORGN, CLS_CODE, CLS_NAME, CLS_NAMEE, CLS_DESCR, CLS_DESCRE, 
+    PARENT_ID, PARENT_CODE, CLS_LEVEL, END_FLAG, UDF01, UDF02, UDF03, UDF04, UDF05, UDF06, 
+    UDF07, UDF08, UDF09, UDF10, UDF11, UDF12, UDF13, UDF14, UDF15, UDF16, UDF17, UDF18, 
+    UDF19, UDF20, UDF21, UDF22, UDF23, UDF24, UDF25, TS, RD, ACTIVE_FLAG, REMARK, CREATED_BY, 
+    CREATED_DATE, MODIFIED_BY, MODIFIED_DATE, SAASID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from dbo.BASE_CUSTOMER_CLASS
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.BASE_CUSTOMER_CLASS
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.my.ssm.base.model.CustomerClass" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT @@IDENTITY
+    </selectKey>
+    insert into dbo.BASE_CUSTOMER_CLASS (CORP_ID, CORP, ORGN_ID, 
+      ORGN, CLS_CODE, CLS_NAME, 
+      CLS_NAMEE, CLS_DESCR, CLS_DESCRE, 
+      PARENT_ID, PARENT_CODE, CLS_LEVEL, 
+      END_FLAG, UDF01, UDF02, 
+      UDF03, UDF04, UDF05, 
+      UDF06, UDF07, UDF08, 
+      UDF09, UDF10, UDF11, 
+      UDF12, UDF13, UDF14, 
+      UDF15, UDF16, UDF17, 
+      UDF18, UDF19, UDF20, UDF21, 
+      UDF22, UDF23, UDF24, 
+      UDF25, TS, RD, 
+      ACTIVE_FLAG, REMARK, CREATED_BY, 
+      CREATED_DATE, MODIFIED_BY, MODIFIED_DATE, 
+      SAASID)
+    values (#{corpId,jdbcType=BIGINT}, #{corp,jdbcType=VARCHAR}, #{orgnId,jdbcType=BIGINT}, 
+      #{orgn,jdbcType=VARCHAR}, #{clsCode,jdbcType=VARCHAR}, #{clsName,jdbcType=VARCHAR}, 
+      #{clsNamee,jdbcType=VARCHAR}, #{clsDescr,jdbcType=VARCHAR}, #{clsDescre,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=BIGINT}, #{parentCode,jdbcType=VARCHAR}, #{clsLevel,jdbcType=VARCHAR}, 
+      #{endFlag,jdbcType=VARCHAR}, #{udf01,jdbcType=VARCHAR}, #{udf02,jdbcType=VARCHAR}, 
+      #{udf03,jdbcType=VARCHAR}, #{udf04,jdbcType=VARCHAR}, #{udf05,jdbcType=VARCHAR}, 
+      #{udf06,jdbcType=VARCHAR}, #{udf07,jdbcType=VARCHAR}, #{udf08,jdbcType=VARCHAR}, 
+      #{udf09,jdbcType=VARCHAR}, #{udf10,jdbcType=VARCHAR}, #{udf11,jdbcType=DECIMAL}, 
+      #{udf12,jdbcType=DECIMAL}, #{udf13,jdbcType=DECIMAL}, #{udf14,jdbcType=DECIMAL}, 
+      #{udf15,jdbcType=DECIMAL}, #{udf16,jdbcType=BIGINT}, #{udf17,jdbcType=BIGINT}, 
+      #{udf18,jdbcType=BIGINT}, #{udf19,jdbcType=BIGINT}, #{udf20,jdbcType=BIGINT}, #{udf21,jdbcType=TIMESTAMP}, 
+      #{udf22,jdbcType=TIMESTAMP}, #{udf23,jdbcType=TIMESTAMP}, #{udf24,jdbcType=TIMESTAMP}, 
+      #{udf25,jdbcType=TIMESTAMP}, #{ts,jdbcType=TIMESTAMP}, #{rd,jdbcType=VARCHAR}, 
+      #{activeFlag,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, 
+      #{createdDate,jdbcType=TIMESTAMP}, #{modifiedBy,jdbcType=VARCHAR}, #{modifiedDate,jdbcType=TIMESTAMP}, 
+      #{saasid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.my.ssm.base.model.CustomerClass" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT @@IDENTITY
+    </selectKey>
+    insert into dbo.BASE_CUSTOMER_CLASS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="corpId != null" >
+        CORP_ID,
+      </if>
+      <if test="corp != null" >
+        CORP,
+      </if>
+      <if test="orgnId != null" >
+        ORGN_ID,
+      </if>
+      <if test="orgn != null" >
+        ORGN,
+      </if>
+      <if test="clsCode != null" >
+        CLS_CODE,
+      </if>
+      <if test="clsName != null" >
+        CLS_NAME,
+      </if>
+      <if test="clsNamee != null" >
+        CLS_NAMEE,
+      </if>
+      <if test="clsDescr != null" >
+        CLS_DESCR,
+      </if>
+      <if test="clsDescre != null" >
+        CLS_DESCRE,
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID,
+      </if>
+      <if test="parentCode != null" >
+        PARENT_CODE,
+      </if>
+      <if test="clsLevel != null" >
+        CLS_LEVEL,
+      </if>
+      <if test="endFlag != null" >
+        END_FLAG,
+      </if>
+      <if test="udf01 != null" >
+        UDF01,
+      </if>
+      <if test="udf02 != null" >
+        UDF02,
+      </if>
+      <if test="udf03 != null" >
+        UDF03,
+      </if>
+      <if test="udf04 != null" >
+        UDF04,
+      </if>
+      <if test="udf05 != null" >
+        UDF05,
+      </if>
+      <if test="udf06 != null" >
+        UDF06,
+      </if>
+      <if test="udf07 != null" >
+        UDF07,
+      </if>
+      <if test="udf08 != null" >
+        UDF08,
+      </if>
+      <if test="udf09 != null" >
+        UDF09,
+      </if>
+      <if test="udf10 != null" >
+        UDF10,
+      </if>
+      <if test="udf11 != null" >
+        UDF11,
+      </if>
+      <if test="udf12 != null" >
+        UDF12,
+      </if>
+      <if test="udf13 != null" >
+        UDF13,
+      </if>
+      <if test="udf14 != null" >
+        UDF14,
+      </if>
+      <if test="udf15 != null" >
+        UDF15,
+      </if>
+      <if test="udf16 != null" >
+        UDF16,
+      </if>
+      <if test="udf17 != null" >
+        UDF17,
+      </if>
+      <if test="udf18 != null" >
+        UDF18,
+      </if>
+      <if test="udf19 != null" >
+        UDF19,
+      </if>
+      <if test="udf20 != null" >
+        UDF20,
+      </if>
+      <if test="udf21 != null" >
+        UDF21,
+      </if>
+      <if test="udf22 != null" >
+        UDF22,
+      </if>
+      <if test="udf23 != null" >
+        UDF23,
+      </if>
+      <if test="udf24 != null" >
+        UDF24,
+      </if>
+      <if test="udf25 != null" >
+        UDF25,
+      </if>
+      <if test="ts != null" >
+        TS,
+      </if>
+      <if test="rd != null" >
+        RD,
+      </if>
+      <if test="activeFlag != null" >
+        ACTIVE_FLAG,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY,
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE,
+      </if>
+      <if test="modifiedBy != null" >
+        MODIFIED_BY,
+      </if>
+      <if test="modifiedDate != null" >
+        MODIFIED_DATE,
+      </if>
+      <if test="saasid != null" >
+        SAASID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="corpId != null" >
+        #{corpId,jdbcType=BIGINT},
+      </if>
+      <if test="corp != null" >
+        #{corp,jdbcType=VARCHAR},
+      </if>
+      <if test="orgnId != null" >
+        #{orgnId,jdbcType=BIGINT},
+      </if>
+      <if test="orgn != null" >
+        #{orgn,jdbcType=VARCHAR},
+      </if>
+      <if test="clsCode != null" >
+        #{clsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="clsName != null" >
+        #{clsName,jdbcType=VARCHAR},
+      </if>
+      <if test="clsNamee != null" >
+        #{clsNamee,jdbcType=VARCHAR},
+      </if>
+      <if test="clsDescr != null" >
+        #{clsDescr,jdbcType=VARCHAR},
+      </if>
+      <if test="clsDescre != null" >
+        #{clsDescre,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="parentCode != null" >
+        #{parentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="clsLevel != null" >
+        #{clsLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="endFlag != null" >
+        #{endFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="udf01 != null" >
+        #{udf01,jdbcType=VARCHAR},
+      </if>
+      <if test="udf02 != null" >
+        #{udf02,jdbcType=VARCHAR},
+      </if>
+      <if test="udf03 != null" >
+        #{udf03,jdbcType=VARCHAR},
+      </if>
+      <if test="udf04 != null" >
+        #{udf04,jdbcType=VARCHAR},
+      </if>
+      <if test="udf05 != null" >
+        #{udf05,jdbcType=VARCHAR},
+      </if>
+      <if test="udf06 != null" >
+        #{udf06,jdbcType=VARCHAR},
+      </if>
+      <if test="udf07 != null" >
+        #{udf07,jdbcType=VARCHAR},
+      </if>
+      <if test="udf08 != null" >
+        #{udf08,jdbcType=VARCHAR},
+      </if>
+      <if test="udf09 != null" >
+        #{udf09,jdbcType=VARCHAR},
+      </if>
+      <if test="udf10 != null" >
+        #{udf10,jdbcType=VARCHAR},
+      </if>
+      <if test="udf11 != null" >
+        #{udf11,jdbcType=DECIMAL},
+      </if>
+      <if test="udf12 != null" >
+        #{udf12,jdbcType=DECIMAL},
+      </if>
+      <if test="udf13 != null" >
+        #{udf13,jdbcType=DECIMAL},
+      </if>
+      <if test="udf14 != null" >
+        #{udf14,jdbcType=DECIMAL},
+      </if>
+      <if test="udf15 != null" >
+        #{udf15,jdbcType=DECIMAL},
+      </if>
+      <if test="udf16 != null" >
+        #{udf16,jdbcType=BIGINT},
+      </if>
+      <if test="udf17 != null" >
+        #{udf17,jdbcType=BIGINT},
+      </if>
+      <if test="udf18 != null" >
+        #{udf18,jdbcType=BIGINT},
+      </if>
+      <if test="udf19 != null" >
+        #{udf19,jdbcType=BIGINT},
+      </if>
+      <if test="udf20 != null" >
+        #{udf20,jdbcType=BIGINT},
+      </if>
+      <if test="udf21 != null" >
+        #{udf21,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udf22 != null" >
+        #{udf22,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udf23 != null" >
+        #{udf23,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udf24 != null" >
+        #{udf24,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udf25 != null" >
+        #{udf25,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rd != null" >
+        #{rd,jdbcType=VARCHAR},
+      </if>
+      <if test="activeFlag != null" >
+        #{activeFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null" >
+        #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedDate != null" >
+        #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saasid != null" >
+        #{saasid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.my.ssm.base.model.CustomerClass" >
+    update dbo.BASE_CUSTOMER_CLASS
+    <set >
+      <if test="corpId != null" >
+        CORP_ID = #{corpId,jdbcType=BIGINT},
+      </if>
+      <if test="corp != null" >
+        CORP = #{corp,jdbcType=VARCHAR},
+      </if>
+      <if test="orgnId != null" >
+        ORGN_ID = #{orgnId,jdbcType=BIGINT},
+      </if>
+      <if test="orgn != null" >
+        ORGN = #{orgn,jdbcType=VARCHAR},
+      </if>
+      <if test="clsCode != null" >
+        CLS_CODE = #{clsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="clsName != null" >
+        CLS_NAME = #{clsName,jdbcType=VARCHAR},
+      </if>
+      <if test="clsNamee != null" >
+        CLS_NAMEE = #{clsNamee,jdbcType=VARCHAR},
+      </if>
+      <if test="clsDescr != null" >
+        CLS_DESCR = #{clsDescr,jdbcType=VARCHAR},
+      </if>
+      <if test="clsDescre != null" >
+        CLS_DESCRE = #{clsDescre,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="parentCode != null" >
+        PARENT_CODE = #{parentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="clsLevel != null" >
+        CLS_LEVEL = #{clsLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="endFlag != null" >
+        END_FLAG = #{endFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="udf01 != null" >
+        UDF01 = #{udf01,jdbcType=VARCHAR},
+      </if>
+      <if test="udf02 != null" >
+        UDF02 = #{udf02,jdbcType=VARCHAR},
+      </if>
+      <if test="udf03 != null" >
+        UDF03 = #{udf03,jdbcType=VARCHAR},
+      </if>
+      <if test="udf04 != null" >
+        UDF04 = #{udf04,jdbcType=VARCHAR},
+      </if>
+      <if test="udf05 != null" >
+        UDF05 = #{udf05,jdbcType=VARCHAR},
+      </if>
+      <if test="udf06 != null" >
+        UDF06 = #{udf06,jdbcType=VARCHAR},
+      </if>
+      <if test="udf07 != null" >
+        UDF07 = #{udf07,jdbcType=VARCHAR},
+      </if>
+      <if test="udf08 != null" >
+        UDF08 = #{udf08,jdbcType=VARCHAR},
+      </if>
+      <if test="udf09 != null" >
+        UDF09 = #{udf09,jdbcType=VARCHAR},
+      </if>
+      <if test="udf10 != null" >
+        UDF10 = #{udf10,jdbcType=VARCHAR},
+      </if>
+      <if test="udf11 != null" >
+        UDF11 = #{udf11,jdbcType=DECIMAL},
+      </if>
+      <if test="udf12 != null" >
+        UDF12 = #{udf12,jdbcType=DECIMAL},
+      </if>
+      <if test="udf13 != null" >
+        UDF13 = #{udf13,jdbcType=DECIMAL},
+      </if>
+      <if test="udf14 != null" >
+        UDF14 = #{udf14,jdbcType=DECIMAL},
+      </if>
+      <if test="udf15 != null" >
+        UDF15 = #{udf15,jdbcType=DECIMAL},
+      </if>
+      <if test="udf16 != null" >
+        UDF16 = #{udf16,jdbcType=BIGINT},
+      </if>
+      <if test="udf17 != null" >
+        UDF17 = #{udf17,jdbcType=BIGINT},
+      </if>
+      <if test="udf18 != null" >
+        UDF18 = #{udf18,jdbcType=BIGINT},
+      </if>
+      <if test="udf19 != null" >
+        UDF19 = #{udf19,jdbcType=BIGINT},
+      </if>
+      <if test="udf20 != null" >
+        UDF20 = #{udf20,jdbcType=BIGINT},
+      </if>
+      <if test="udf21 != null" >
+        UDF21 = #{udf21,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udf22 != null" >
+        UDF22 = #{udf22,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udf23 != null" >
+        UDF23 = #{udf23,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udf24 != null" >
+        UDF24 = #{udf24,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udf25 != null" >
+        UDF25 = #{udf25,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ts != null" >
+        TS = #{ts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rd != null" >
+        RD = #{rd,jdbcType=VARCHAR},
+      </if>
+      <if test="activeFlag != null" >
+        ACTIVE_FLAG = #{activeFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null" >
+        MODIFIED_BY = #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedDate != null" >
+        MODIFIED_DATE = #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saasid != null" >
+        SAASID = #{saasid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.my.ssm.base.model.CustomerClass" >
+    update dbo.BASE_CUSTOMER_CLASS
+    set CORP_ID = #{corpId,jdbcType=BIGINT},
+      CORP = #{corp,jdbcType=VARCHAR},
+      ORGN_ID = #{orgnId,jdbcType=BIGINT},
+      ORGN = #{orgn,jdbcType=VARCHAR},
+      CLS_CODE = #{clsCode,jdbcType=VARCHAR},
+      CLS_NAME = #{clsName,jdbcType=VARCHAR},
+      CLS_NAMEE = #{clsNamee,jdbcType=VARCHAR},
+      CLS_DESCR = #{clsDescr,jdbcType=VARCHAR},
+      CLS_DESCRE = #{clsDescre,jdbcType=VARCHAR},
+      PARENT_ID = #{parentId,jdbcType=BIGINT},
+      PARENT_CODE = #{parentCode,jdbcType=VARCHAR},
+      CLS_LEVEL = #{clsLevel,jdbcType=VARCHAR},
+      END_FLAG = #{endFlag,jdbcType=VARCHAR},
+      UDF01 = #{udf01,jdbcType=VARCHAR},
+      UDF02 = #{udf02,jdbcType=VARCHAR},
+      UDF03 = #{udf03,jdbcType=VARCHAR},
+      UDF04 = #{udf04,jdbcType=VARCHAR},
+      UDF05 = #{udf05,jdbcType=VARCHAR},
+      UDF06 = #{udf06,jdbcType=VARCHAR},
+      UDF07 = #{udf07,jdbcType=VARCHAR},
+      UDF08 = #{udf08,jdbcType=VARCHAR},
+      UDF09 = #{udf09,jdbcType=VARCHAR},
+      UDF10 = #{udf10,jdbcType=VARCHAR},
+      UDF11 = #{udf11,jdbcType=DECIMAL},
+      UDF12 = #{udf12,jdbcType=DECIMAL},
+      UDF13 = #{udf13,jdbcType=DECIMAL},
+      UDF14 = #{udf14,jdbcType=DECIMAL},
+      UDF15 = #{udf15,jdbcType=DECIMAL},
+      UDF16 = #{udf16,jdbcType=BIGINT},
+      UDF17 = #{udf17,jdbcType=BIGINT},
+      UDF18 = #{udf18,jdbcType=BIGINT},
+      UDF19 = #{udf19,jdbcType=BIGINT},
+      UDF20 = #{udf20,jdbcType=BIGINT},
+      UDF21 = #{udf21,jdbcType=TIMESTAMP},
+      UDF22 = #{udf22,jdbcType=TIMESTAMP},
+      UDF23 = #{udf23,jdbcType=TIMESTAMP},
+      UDF24 = #{udf24,jdbcType=TIMESTAMP},
+      UDF25 = #{udf25,jdbcType=TIMESTAMP},
+      TS = #{ts,jdbcType=TIMESTAMP},
+      RD = #{rd,jdbcType=VARCHAR},
+      ACTIVE_FLAG = #{activeFlag,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      MODIFIED_BY = #{modifiedBy,jdbcType=VARCHAR},
+      MODIFIED_DATE = #{modifiedDate,jdbcType=TIMESTAMP},
+      SAASID = #{saasid,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

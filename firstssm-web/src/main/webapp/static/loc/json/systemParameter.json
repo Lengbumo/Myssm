@@ -1,0 +1,14 @@
+{
+	"cmsName": "myssm后台管理",
+	"version": "v2.0",
+	"author": "WJ",
+	"homePage": "index",
+	"server": "windows",
+	"dataBase": "8.00.2039",
+	"maxUpload": "2M",
+	"userRights": "超级管理员",
+	"description": "这是一套基于layui的cms模版",
+	"powerby": "copyright @2019 WJ",
+	"record": "",
+	"keywords": "layuicms,myssm"
+}

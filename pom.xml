@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.myssm</groupId>
+  <artifactId>firstssm</artifactId>
+  <packaging>pom</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>firstssm Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+  <modules>
+  	<module>firstssm-dao</module>
+  	<module>firstssm-api</module>
+  	<module>firstssm-web</module>
+  </modules>
+  
+  <properties>  
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- spring版本号 -->  
+    <spring.version>4.0.2.RELEASE</spring.version>  
+    <!-- mybatis相关版本号 -->  
+    <mybatis.version>3.2.8</mybatis.version>
+    <mybatis.generator.version>1.3.5</mybatis.generator.version>
+	<mybatis-generator.version>1.3.2</mybatis-generator.version>
+	<mybatis-migrations.version>3.2.0</mybatis-migrations.version>
+    <!-- log4j日志文件管理包版本 -->  
+    <slf4j.version>1.7.7</slf4j.version>  
+    <log4j.version>1.2.17</log4j.version>  
+    <logback.version>1.1.7</logback.version>
+    <lombok.version>1.14.4</lombok.version>
+    <!-- cglib动态代理版本号 -->
+    <cglib.version>2.2.2</cglib.version>
+    <!-- 标准标签库版本号 -->
+    <jstl.version>1.2</jstl.version>
+    <jetty.version>7.6.2.v20120308</jetty.version>
+    <!-- 组件上传版本号 -->
+    <commons-fileupload.version>1.3.1</commons-fileupload.version>
+    <commons-io.version>2.4</commons-io.version>
+    <commons-codec.version>1.9</commons-codec.version>
+    <commons.logging.version>1.1.1</commons.logging.version>
+    <!-- 映入JSON版本号 -->
+    <codehaus.version>1.9.9</codehaus.version>
+    <!-- 编译时maven执行测试用例的插件版本 -->
+    <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+    <!-- 编译时指定项目源码的jdk版本 -->
+    <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+    <maven-compiler-jdk.version>1.8</maven-compiler-jdk.version>
+    <!-- hutool -->
+    <hutool.version>4.5.6</hutool.version>
+    <!-- -->
+    <swagger2.version>2.4.0</swagger2.version>
+    
+    <!-- api所需jar包 -->
+    <mysql.version>5.1.28</mysql.version>
+    <itext.version>2.1.7</itext.version>
+    <itextasian.version>1.5.2</itextasian.version>
+    <codehaus.groovy.version>2.4.3</codehaus.groovy.version>
+    <zxing.version>2.1</zxing.version>
+	<barcode4j.version>2.1</barcode4j.version>
+	<barbecue.version>1.5-beta1</barbecue.version>
+	<poi.version>3.9</poi.version>
+	<poi-ooxml.version>3.9</poi-ooxml.version>
+    <jxl.version>2.6.12</jxl.version>
+    <velocity.version>1.7</velocity.version>
+    <freemark.version>2.3.20</freemark.version>
+    <fastjson.version>1.2.31</fastjson.version>
+    <codehaus.version>1.9.9</codehaus.version>
+    <jackson.version>2.9.8</jackson.version>
+    <httpclient.version>4.5.2</httpclient.version>
+    <hutool.version>4.3.1</hutool.version>
+    
+    <!-- dao所需jar包 -->
+    <commons.lang3.version>3.6</commons.lang3.version>
+    <commons.io.version>2.5</commons.io.version>
+    <commons.codec.version>1.10</commons.codec.version>
+    <druid.version>1.0.26</druid.version>
+    <dbunit.version>2.4.9</dbunit.version>
+    <mybatis-spring.version>1.2.1</mybatis-spring.version>
+    <eaio.version>3.2</eaio.version>
+    <joda.version>2.3</joda.version>
+    
+  </properties>
+  
+  <build>  
+        <!-- 设置项目默认jdk版本 -->
+        <plugins>  
+            <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-compiler-plugin</artifactId>  
+                <version>${maven-compiler-plugin.version}</version>  
+                <configuration>  
+                    <source>${maven-compiler-jdk.version}</source>  
+                    <target>${maven-compiler-jdk.version}</target>  
+                </configuration>  
+            </plugin>  
+        </plugins>  
+    </build>
+  
+</project>

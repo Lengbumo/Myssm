@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.ssm.base.dao.CustomerMapper">
+
+	<!-- page -->
+	<select id="page" resultMap="BaseResultMap" parameterType="com.my.ssm.base.search.CustomerSearch">
+        <![CDATA[${PAGE_HEAD}]]>
+		select
+		<include refid="Base_Column_List" />
+		from BASE_CUSTOMER
+		<include refid="where" />
+		order by ID desc
+        <![CDATA[${PAGE_FOOT}]]>
+	</select>
+	
+	<!-- count -->
+	<select id="count" resultType="java.lang.Long" parameterType="com.my.ssm.base.search.CustomerSearch">
+		select count(*) FROM BASE_CUSTOMER
+		<include refid="where" />
+	</select>
+	
+	<!-- pageExt -->
+	<select id="pageExt" resultMap="BaseResultMap" parameterType="com.my.ssm.base.search.CustomerSearch">
+        <![CDATA[${PAGE_HEAD}]]>
+		select
+		<include refid="Base_Column_List" />
+		from BASE_CUSTOMER
+		<include refid="whereExt" />
+		order by ID desc
+        <![CDATA[${PAGE_FOOT}]]>
+	</select>
+	
+	<!-- countExt -->
+	<select id="countExt" resultType="java.lang.Long" parameterType="com.my.ssm.base.search.CustomerSearch">
+		select count(*) FROM BASE_CUSTOMER
+		<include refid="whereExt" />
+	</select>
+	
+	<!-- list -->
+	<select id="list" resultMap="BaseResultMap" parameterType="com.my.ssm.base.search.CustomerSearch">
+		select
+		<include refid="Base_Column_List" />
+		from BASE_CUSTOMER
+		<include refid="where" />
+	</select>
+	
+	<!-- listExt -->
+	<select id="listExt" resultMap="BaseResultMap" parameterType="com.my.ssm.base.search.CustomerSearch">
+		select
+		<include refid="Base_Column_List" />
+		from BASE_CUSTOMER
+		<include refid="whereExt" />
+	</select>
+	
+	<!-- listExport -->
+	<select id="listExport" resultMap="BaseResultMap" parameterType="com.my.ssm.base.search.CustomerSearch">
+		select
+		<include refid="Base_Column_List" />
+		from BASE_CUSTOMER 
+		<include refid="where" />
+	</select>
+	
+	<!-- listExportExt -->
+	<select id="listExportExt" resultMap="BaseResultMap" parameterType="com.my.ssm.base.search.CustomerSearch">
+		select
+		<include refid="Base_Column_List" />
+		from BASE_CUSTOMER 
+		<include refid="whereExt" />
+	</select>
+    
+    <!-- selectExtByPrimaryKey -->
+    <select id="selectExtByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List" />
+        from BASE_CUSTOMER
+        where ID = #{id,jdbcType=BIGINT}
+    </select>
+    
+	<!-- selectByBizKey -->
+	<select id="selectByBizKey" resultMap="BaseResultMap" parameterType="com.my.ssm.base.search.CustomerSearch">
+		select
+		<include refid="Base_Column_List" />
+		from BASE_CUSTOMER
+		<include refid="whereByBizKey" />
+	</select>
+	
+	<!-- selectExtByBizKey -->
+    <select id="selectExtByBizKey" resultMap="BaseResultMap" parameterType="com.my.ssm.base.search.CustomerSearch">
+        select
+        <include refid="Base_Column_List" />
+        from BASE_CUSTOMER
+        <include refid="whereByBizKey" />
+    </select>
+    
+	<!-- deleteByBizKey -->
+	<delete id="deleteByBizKey" parameterType="com.my.ssm.base.model.Customer">
+		delete from BASE_CUSTOMER
+		<include refid="whereByBizKey" />
+	</delete>
+	
+	<!-- bulkDelete -->
+	<delete id="bulkDelete" parameterType="java.util.List" >
+        delete from BASE_CUSTOMER
+        <where>
+	        <foreach collection="keyList" item="data" open="ID IN(" separator="," close=")">
+	            ${data.id}
+	        </foreach>
+        </where>
+    </delete>
+	
+	<!-- updateByBizKey -->
+    <update id="updateByBizKey" parameterType="com.my.ssm.base.model.Customer">
+    	update BASE_CUSTOMER
+        <set>
+      		<if test="id != null " >
+        		ID = #{id,jdbcType=DECIMAL},
+      		</if>
+      		<if test="corpId != null " >
+        		CORP_ID = #{corpId,jdbcType=DECIMAL},
+      		</if>
+      		<if test="corp != null and CORP != '' " >
+        		CORP = #{corp,jdbcType=VARCHAR},
+      		</if>
+      		<if test="orgnId != null " >
+        		ORGN_ID = #{orgnId,jdbcType=DECIMAL},
+      		</if>
+      		<if test="orgn != null and ORGN != '' " >
+        		ORGN = #{orgn,jdbcType=VARCHAR},
+      		</if>
+      		<if test="clsId != null " >
+        		CLS_ID = #{clsId,jdbcType=DECIMAL},
+      		</if>
+      		<if test="clsCode != null and CLS_CODE != '' " >
+        		CLS_CODE = #{clsCode,jdbcType=VARCHAR},
+      		</if>
+      		<if test="cusCode != null and CUS_CODE != '' " >
+        		CUS_CODE = #{cusCode,jdbcType=VARCHAR},
+      		</if>
+      		<if test="cusName != null and CUS_NAME != '' " >
+        		CUS_NAME = #{cusName,jdbcType=VARCHAR},
+      		</if>
+      		<if test="cusNamee != null and CUS_NAMEE != '' " >
+        		CUS_NAMEE = #{cusNamee,jdbcType=VARCHAR},
+      		</if>
+      		<if test="cusDescr != null and CUS_DESCR != '' " >
+        		CUS_DESCR = #{cusDescr,jdbcType=VARCHAR},
+      		</if>
+      		<if test="cusDescre != null and CUS_DESCRE != '' " >
+        		CUS_DESCRE = #{cusDescre,jdbcType=VARCHAR},
+      		</if>
+      		<if test="easyCode != null and EASY_CODE != '' " >
+        		EASY_CODE = #{easyCode,jdbcType=VARCHAR},
+      		</if>
+      		<if test="cusType != null and CUS_TYPE != '' " >
+        		CUS_TYPE = #{cusType,jdbcType=VARCHAR},
+      		</if>
+      		<if test="country != null and COUNTRY != '' " >
+        		COUNTRY = #{country,jdbcType=VARCHAR},
+      		</if>
+      		<if test="province != null and PROVINCE != '' " >
+        		PROVINCE = #{province,jdbcType=VARCHAR},
+      		</if>
+      		<if test="city != null and CITY != '' " >
+        		CITY = #{city,jdbcType=VARCHAR},
+      		</if>
+      		<if test="district != null and DISTRICT != '' " >
+        		DISTRICT = #{district,jdbcType=VARCHAR},
+      		</if>
+      		<if test="address != null and ADDRESS != '' " >
+        		ADDRESS = #{address,jdbcType=VARCHAR},
+      		</if>
+      		<if test="fullAddress != null and FULL_ADDRESS != '' " >
+        		FULL_ADDRESS = #{fullAddress,jdbcType=VARCHAR},
+      		</if>
+      		<if test="zip != null and ZIP != '' " >
+        		ZIP = #{zip,jdbcType=VARCHAR},
+      		</if>
+      		<if test="contact != null and CONTACT != '' " >
+        		CONTACT = #{contact,jdbcType=VARCHAR},
+      		</if>
+      		<if test="contactTel != null and CONTACT_TEL != '' " >
+        		CONTACT_TEL = #{contactTel,jdbcType=VARCHAR},
+      		</if>
+      		<if test="contactMobile != null and CONTACT_MOBILE != '' " >
+        		CONTACT_MOBILE = #{contactMobile,jdbcType=VARCHAR},
+      		</if>
+      		<if test="contactFax != null and CONTACT_FAX != '' " >
+        		CONTACT_FAX = #{contactFax,jdbcType=VARCHAR},
+      		</if>
+      		<if test="contactTitle != null and CONTACT_TITLE != '' " >
+        		CONTACT_TITLE = #{contactTitle,jdbcType=VARCHAR},
+      		</if>
+      		<if test="contactEmail != null and CONTACT_EMAIL != '' " >
+        		CONTACT_EMAIL = #{contactEmail,jdbcType=VARCHAR},
+      		</if>
+      		<if test="udf01 != null and UDF01 != '' " >
+        		UDF01 = #{udf01,jdbcType=VARCHAR},
+      		</if>
+      		<if test="udf02 != null and UDF02 != '' " >
+        		UDF02 = #{udf02,jdbcType=VARCHAR},
+      		</if>
+      		<if test="udf03 != null and UDF03 != '' " >
+        		UDF03 = #{udf03,jdbcType=VARCHAR},
+      		</if>
+      		<if test="udf04 != null and UDF04 != '' " >
+        		UDF04 = #{udf04,jdbcType=VARCHAR},
+      		</if>
+      		<if test="udf05 != null and UDF05 != '' " >
+        		UDF05 = #{udf05,jdbcType=VARCHAR},
+      		</if>
+      		<if test="udf06 != null and UDF06 != '' " >
+        		UDF06 = #{udf06,jdbcType=VARCHAR},
+      		</if>
+      		<if test="udf07 != null and UDF07 != '' " >
+        		UDF07 = #{udf07,jdbcType=VARCHAR},
+      		</if>
+      		<if test="udf08 != null and UDF08 != '' " >
+        		UDF08 = #{udf08,jdbcType=VARCHAR},
+      		</if>
+      		<if test="udf09 != null and UDF09 != '' " >
+        		UDF09 = #{udf09,jdbcType=VARCHAR},
+      		</if>
+      		<if test="udf10 != null and UDF10 != '' " >
+        		UDF10 = #{udf10,jdbcType=VARCHAR},
+      		</if>
+      		<if test="udf11 != null " >
+        		UDF11 = #{udf11,jdbcType=DECIMAL},
+      		</if>
+      		<if test="udf12 != null " >
+        		UDF12 = #{udf12,jdbcType=DECIMAL},
+      		</if>
+      		<if test="udf13 != null " >
+        		UDF13 = #{udf13,jdbcType=DECIMAL},
+      		</if>
+      		<if test="udf14 != null " >
+        		UDF14 = #{udf14,jdbcType=DECIMAL},
+      		</if>
+      		<if test="udf15 != null " >
+        		UDF15 = #{udf15,jdbcType=DECIMAL},
+      		</if>
+      		<if test="udf16 != null " >
+        		UDF16 = #{udf16,jdbcType=DECIMAL},
+      		</if>
+      		<if test="udf17 != null " >
+        		UDF17 = #{udf17,jdbcType=DECIMAL},
+      		</if>
+      		<if test="udf18 != null " >
+        		UDF18 = #{udf18,jdbcType=DECIMAL},
+      		</if>
+      		<if test="udf19 != null " >
+        		UDF19 = #{udf19,jdbcType=DECIMAL},
+      		</if>
+      		<if test="udf20 != null " >
+        		UDF20 = #{udf20,jdbcType=DECIMAL},
+      		</if>
+      		<if test="udf21 != null " >
+        		UDF21 = #{udf21,jdbcType=TIMESTAMP},
+      		</if>
+      		<if test="udf22 != null " >
+        		UDF22 = #{udf22,jdbcType=TIMESTAMP},
+      		</if>
+      		<if test="udf23 != null " >
+        		UDF23 = #{udf23,jdbcType=TIMESTAMP},
+      		</if>
+      		<if test="udf24 != null " >
+        		UDF24 = #{udf24,jdbcType=TIMESTAMP},
+      		</if>
+      		<if test="udf25 != null " >
+        		UDF25 = #{udf25,jdbcType=TIMESTAMP},
+      		</if>
+      		<if test="ts != null " >
+        		TS = #{ts,jdbcType=TIMESTAMP},
+      		</if>
+      		<if test="rd != null and RD != '' " >
+        		RD = #{rd,jdbcType=VARCHAR},
+      		</if>
+      		<if test="activeFlag != null and ACTIVE_FLAG != '' " >
+        		ACTIVE_FLAG = #{activeFlag,jdbcType=VARCHAR},
+      		</if>
+      		<if test="remark != null and REMARK != '' " >
+        		REMARK = #{remark,jdbcType=VARCHAR},
+      		</if>
+      		<if test="createdBy != null and CREATED_BY != '' " >
+        		CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      		</if>
+      		<if test="createdDate != null " >
+        		CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      		</if>
+      		<if test="modifiedBy != null and MODIFIED_BY != '' " >
+        		MODIFIED_BY = #{modifiedBy,jdbcType=VARCHAR},
+      		</if>
+      		<if test="modifiedDate != null " >
+        		MODIFIED_DATE = #{modifiedDate,jdbcType=TIMESTAMP},
+      		</if>
+      		<if test="saasid != null and SAASID != '' " >
+        		SAASID = #{saasid,jdbcType=VARCHAR},
+      		</if>
+		</set>
+		<include refid="whereByBizKey" />
+    </update>
+	
+	<!-- where -->
+	<sql id="where">
+		<where>
+			<if test="corpId != null" >
+        		AND CORP_ID = #{corpId,jdbcType=BIGINT}
+      		</if>
+      		<if test="corp != null and corp != '' " >
+        		AND CORP = #{corp,jdbcType=VARCHAR}
+      		</if>
+      		<if test="orgnId != null" >
+        		AND ORGN_ID = #{orgnId,jdbcType=BIGINT}
+      		</if>
+      		<if test="orgn != null and orgn != '' ">
+        		AND ORGN = #{orgn,jdbcType=VARCHAR}
+      		</if>
+      		<if test="cusCode != null">
+				AND CUS_CODE like CONCAT('%',#{cusCode,jdbcType=VARCHAR},'%')
+			</if>
+			<if test="cusName != null">
+				AND CUS_NAME like CONCAT('%',#{cusName,jdbcType=VARCHAR},'%')
+			</if>
+			<if test="clsCode != null">
+				AND CLS_CODE = #{clsCode,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</sql>
+	
+	<!-- whereExt -->
+	<sql id="whereExt">
+		<where>
+			<if test="corpId != null" >
+        		AND CORP_ID = #{corpId,jdbcType=BIGINT}
+      		</if>
+      		<if test="corp != null and corp != '' " >
+        		AND CORP = #{corp,jdbcType=VARCHAR}
+      		</if>
+      		<if test="orgnId != null" >
+        		AND ORGN_ID = #{orgnId,jdbcType=BIGINT}
+      		</if>
+      		<if test="orgn != null and orgn != '' ">
+        		AND ORGN = #{orgn,jdbcType=VARCHAR}
+      		</if>
+		</where>
+	</sql>
+	
+	<!-- whereByBizKey -->
+	<sql id="whereByBizKey">
+		<where>
+			<if test="corpId != null" >
+        		AND CORP_ID = #{corpId,jdbcType=BIGINT}
+      		</if>
+      		<if test="corp != null and corp != '' " >
+        		AND CORP = #{corp,jdbcType=VARCHAR}
+      		</if>
+      		<if test="orgnId != null" >
+        		AND ORGN_ID = #{orgnId,jdbcType=BIGINT}
+      		</if>
+      		<if test="orgn != null and orgn != '' ">
+        		AND ORGN = #{orgn,jdbcType=VARCHAR}
+      		</if>
+		</where>
+	</sql>
+	
+</mapper>

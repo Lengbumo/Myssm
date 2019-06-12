@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.my.ssm.sys.dao.MenuMapper" >
+  <resultMap id="BaseResultMap" type="com.my.ssm.sys.model.Menu" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="CORP_ID" property="corpId" jdbcType="BIGINT" />
+    <result column="CORP" property="corp" jdbcType="VARCHAR" />
+    <result column="ORGN_ID" property="orgnId" jdbcType="BIGINT" />
+    <result column="ORGN" property="orgn" jdbcType="VARCHAR" />
+    <result column="MODULE_ID" property="moduleId" jdbcType="BIGINT" />
+    <result column="MODULE_CODE" property="moduleCode" jdbcType="VARCHAR" />
+    <result column="MENU_ICON" property="menuIcon" jdbcType="VARCHAR" />
+    <result column="MENU_CODE" property="menuCode" jdbcType="VARCHAR" />
+    <result column="MENU_NAME" property="menuName" jdbcType="VARCHAR" />
+    <result column="MENU_SORT" property="menuSort" jdbcType="VARCHAR" />
+    <result column="SYS_URL" property="sysUrl" jdbcType="VARCHAR" />
+    <result column="MENU_URL" property="menuUrl" jdbcType="VARCHAR" />
+    <result column="PARENT_ID" property="parentId" jdbcType="BIGINT" />
+    <result column="RD" property="rd" jdbcType="VARCHAR" />
+    <result column="ACTIVE_FLAG" property="activeFlag" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CREATED_BY" property="createdBy" jdbcType="VARCHAR" />
+    <result column="CREATED_DATE" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="MODIFIED_BY" property="modifiedBy" jdbcType="VARCHAR" />
+    <result column="MODIFIED_DATE" property="modifiedDate" jdbcType="TIMESTAMP" />
+    <result column="SAASID" property="saasid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CORP_ID, CORP, ORGN_ID, ORGN, MODULE_ID, MODULE_CODE, MENU_ICON, MENU_CODE, MENU_NAME, 
+    MENU_SORT, SYS_URL, MENU_URL, PARENT_ID, RD, ACTIVE_FLAG, REMARK, CREATED_BY, CREATED_DATE, 
+    MODIFIED_BY, MODIFIED_DATE, SAASID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_menu
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_menu
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.my.ssm.sys.model.Menu" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_menu (CORP_ID, CORP, ORGN_ID, 
+      ORGN, MODULE_ID, MODULE_CODE, 
+      MENU_ICON, MENU_CODE, MENU_NAME, 
+      MENU_SORT, SYS_URL, MENU_URL, 
+      PARENT_ID, RD, ACTIVE_FLAG, 
+      REMARK, CREATED_BY, CREATED_DATE, 
+      MODIFIED_BY, MODIFIED_DATE, SAASID
+      )
+    values (#{corpId,jdbcType=BIGINT}, #{corp,jdbcType=VARCHAR}, #{orgnId,jdbcType=BIGINT}, 
+      #{orgn,jdbcType=VARCHAR}, #{moduleId,jdbcType=BIGINT}, #{moduleCode,jdbcType=VARCHAR}, 
+      #{menuIcon,jdbcType=VARCHAR}, #{menuCode,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, 
+      #{menuSort,jdbcType=VARCHAR}, #{sysUrl,jdbcType=VARCHAR}, #{menuUrl,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=BIGINT}, #{rd,jdbcType=VARCHAR}, #{activeFlag,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, 
+      #{modifiedBy,jdbcType=VARCHAR}, #{modifiedDate,jdbcType=TIMESTAMP}, #{saasid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.my.ssm.sys.model.Menu" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="corpId != null" >
+        CORP_ID,
+      </if>
+      <if test="corp != null" >
+        CORP,
+      </if>
+      <if test="orgnId != null" >
+        ORGN_ID,
+      </if>
+      <if test="orgn != null" >
+        ORGN,
+      </if>
+      <if test="moduleId != null" >
+        MODULE_ID,
+      </if>
+      <if test="moduleCode != null" >
+        MODULE_CODE,
+      </if>
+      <if test="menuIcon != null" >
+        MENU_ICON,
+      </if>
+      <if test="menuCode != null" >
+        MENU_CODE,
+      </if>
+      <if test="menuName != null" >
+        MENU_NAME,
+      </if>
+      <if test="menuSort != null" >
+        MENU_SORT,
+      </if>
+      <if test="sysUrl != null" >
+        SYS_URL,
+      </if>
+      <if test="menuUrl != null" >
+        MENU_URL,
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID,
+      </if>
+      <if test="rd != null" >
+        RD,
+      </if>
+      <if test="activeFlag != null" >
+        ACTIVE_FLAG,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY,
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE,
+      </if>
+      <if test="modifiedBy != null" >
+        MODIFIED_BY,
+      </if>
+      <if test="modifiedDate != null" >
+        MODIFIED_DATE,
+      </if>
+      <if test="saasid != null" >
+        SAASID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="corpId != null" >
+        #{corpId,jdbcType=BIGINT},
+      </if>
+      <if test="corp != null" >
+        #{corp,jdbcType=VARCHAR},
+      </if>
+      <if test="orgnId != null" >
+        #{orgnId,jdbcType=BIGINT},
+      </if>
+      <if test="orgn != null" >
+        #{orgn,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleId != null" >
+        #{moduleId,jdbcType=BIGINT},
+      </if>
+      <if test="moduleCode != null" >
+        #{moduleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuIcon != null" >
+        #{menuIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="menuCode != null" >
+        #{menuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null" >
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuSort != null" >
+        #{menuSort,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUrl != null" >
+        #{sysUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUrl != null" >
+        #{menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="rd != null" >
+        #{rd,jdbcType=VARCHAR},
+      </if>
+      <if test="activeFlag != null" >
+        #{activeFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null" >
+        #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedDate != null" >
+        #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saasid != null" >
+        #{saasid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.my.ssm.sys.model.Menu" >
+    update sys_menu
+    <set >
+      <if test="corpId != null" >
+        CORP_ID = #{corpId,jdbcType=BIGINT},
+      </if>
+      <if test="corp != null" >
+        CORP = #{corp,jdbcType=VARCHAR},
+      </if>
+      <if test="orgnId != null" >
+        ORGN_ID = #{orgnId,jdbcType=BIGINT},
+      </if>
+      <if test="orgn != null" >
+        ORGN = #{orgn,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleId != null" >
+        MODULE_ID = #{moduleId,jdbcType=BIGINT},
+      </if>
+      <if test="moduleCode != null" >
+        MODULE_CODE = #{moduleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuIcon != null" >
+        MENU_ICON = #{menuIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="menuCode != null" >
+        MENU_CODE = #{menuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null" >
+        MENU_NAME = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuSort != null" >
+        MENU_SORT = #{menuSort,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUrl != null" >
+        SYS_URL = #{sysUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUrl != null" >
+        MENU_URL = #{menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="parentId == null " >
+      	PARENT_ID = null,
+  	  </if>
+      <if test="rd != null" >
+        RD = #{rd,jdbcType=VARCHAR},
+      </if>
+      <if test="activeFlag != null" >
+        ACTIVE_FLAG = #{activeFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null" >
+        MODIFIED_BY = #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedDate != null" >
+        MODIFIED_DATE = #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saasid != null" >
+        SAASID = #{saasid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.my.ssm.sys.model.Menu" >
+    update sys_menu
+    set CORP_ID = #{corpId,jdbcType=BIGINT},
+      CORP = #{corp,jdbcType=VARCHAR},
+      ORGN_ID = #{orgnId,jdbcType=BIGINT},
+      ORGN = #{orgn,jdbcType=VARCHAR},
+      MODULE_ID = #{moduleId,jdbcType=BIGINT},
+      MODULE_CODE = #{moduleCode,jdbcType=VARCHAR},
+      MENU_ICON = #{menuIcon,jdbcType=VARCHAR},
+      MENU_CODE = #{menuCode,jdbcType=VARCHAR},
+      MENU_NAME = #{menuName,jdbcType=VARCHAR},
+      MENU_SORT = #{menuSort,jdbcType=VARCHAR},
+      SYS_URL = #{sysUrl,jdbcType=VARCHAR},
+      MENU_URL = #{menuUrl,jdbcType=VARCHAR},
+      PARENT_ID = #{parentId,jdbcType=BIGINT},
+      RD = #{rd,jdbcType=VARCHAR},
+      ACTIVE_FLAG = #{activeFlag,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      MODIFIED_BY = #{modifiedBy,jdbcType=VARCHAR},
+      MODIFIED_DATE = #{modifiedDate,jdbcType=TIMESTAMP},
+      SAASID = #{saasid,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

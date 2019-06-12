@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="oracleTables" targetRuntime="MyBatis3">
+		<plugin type="org.mybatis.generator.plugins.VirtualPrimaryKeyPlugin" />
+		<plugin type="org.mybatis.generator.plugins.CachePlugin" />
+
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="${generator.jdbcDriver}" connectionURL="${generator.jdbcUrl}" userId="${generator.username}" password="${generator.password}">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="true" />
+		</javaTypeResolver>
+
+		<javaModelGenerator targetPackage="${generator.packagePrefix}.model" targetProject="${generator.target}">
+			<property name="enableSubPackages" value="false" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="${generator.packagePrefix}.xml" targetProject="${generator.target}">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER" targetPackage="${generator.packagePrefix}.dao" targetProject="${generator.target}">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		
+		<!-- BASE_CUSTOMER_ITEM -->
+		<table schema="${generator.schema}" tableName="base_customer_item" domainObjectName="CustomerItem" enableInsert="true"
+			enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" enableSelectByExample="false"
+			enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+			<property name="rootClass" value="com.shqtn.core.model.Model" />
+			<property name="virtualKeyColumns" value="IKEY" />
+			<generatedKey column="IKEY" sqlStatement="SELECT BASE_CUSTOMER_ITEM_S.NEXTVAL FROM DUAL" identity="false" type="pre" />
+			<columnOverride column="IKEY" javaType="java.lang.Long" />
+			<columnOverride column="ORGN_IKEY" javaType="java.lang.Long" />
+			<columnOverride column="CREATED_DATE" jdbcType="TIMESTAMP" />
+			<columnOverride column="MODIFY_DATE" jdbcType="TIMESTAMP" />
+		</table>
+		
+			
+	</context>
+</generatorConfiguration>

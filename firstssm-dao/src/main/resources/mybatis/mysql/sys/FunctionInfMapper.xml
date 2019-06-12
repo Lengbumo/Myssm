@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.my.ssm.sys.dao.FunctionInfMapper" >
+  <resultMap id="BaseResultMap" type="com.my.ssm.sys.model.FunctionInf" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="CORP_ID" property="corpId" jdbcType="BIGINT" />
+    <result column="CORP" property="corp" jdbcType="VARCHAR" />
+    <result column="ORGN_ID" property="orgnId" jdbcType="BIGINT" />
+    <result column="ORGN" property="orgn" jdbcType="VARCHAR" />
+    <result column="FUNCTION_CODE" property="functionCode" jdbcType="VARCHAR" />
+    <result column="FUNCTION_NAME" property="functionName" jdbcType="VARCHAR" />
+    <result column="FUNCTION_URL" property="functionUrl" jdbcType="VARCHAR" />
+    <result column="FUNCTION_SORT" property="functionSort" jdbcType="VARCHAR" />
+    <result column="FUNCTION_ICON" property="functionIcon" jdbcType="VARCHAR" />
+    <result column="MENU_ID" property="menuId" jdbcType="BIGINT" />
+    <result column="UDF01" property="udf01" jdbcType="VARCHAR" />
+    <result column="UDF02" property="udf02" jdbcType="VARCHAR" />
+    <result column="UDF03" property="udf03" jdbcType="VARCHAR" />
+    <result column="UDF04" property="udf04" jdbcType="VARCHAR" />
+    <result column="UDF05" property="udf05" jdbcType="VARCHAR" />
+    <result column="RD" property="rd" jdbcType="VARCHAR" />
+    <result column="ACTIVE_FLAG" property="activeFlag" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CREATED_BY" property="createdBy" jdbcType="VARCHAR" />
+    <result column="CREATED_DATE" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="MODIFIED_BY" property="modifiedBy" jdbcType="VARCHAR" />
+    <result column="MODIFIED_DATE" property="modifiedDate" jdbcType="TIMESTAMP" />
+    <result column="SAASID" property="saasid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CORP_ID, CORP, ORGN_ID, ORGN, FUNCTION_CODE, FUNCTION_NAME, FUNCTION_URL, FUNCTION_SORT, 
+    FUNCTION_ICON, MENU_ID, UDF01, UDF02, UDF03, UDF04, UDF05, RD, ACTIVE_FLAG, REMARK, 
+    CREATED_BY, CREATED_DATE, MODIFIED_BY, MODIFIED_DATE, SAASID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_function_inf
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_function_inf
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.my.ssm.sys.model.FunctionInf" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_function_inf (CORP_ID, CORP, ORGN_ID, 
+      ORGN, FUNCTION_CODE, FUNCTION_NAME, 
+      FUNCTION_URL, FUNCTION_SORT, FUNCTION_ICON, 
+      MENU_ID, UDF01, UDF02, 
+      UDF03, UDF04, UDF05, 
+      RD, ACTIVE_FLAG, REMARK, 
+      CREATED_BY, CREATED_DATE, MODIFIED_BY, 
+      MODIFIED_DATE, SAASID)
+    values (#{corpId,jdbcType=BIGINT}, #{corp,jdbcType=VARCHAR}, #{orgnId,jdbcType=BIGINT}, 
+      #{orgn,jdbcType=VARCHAR}, #{functionCode,jdbcType=VARCHAR}, #{functionName,jdbcType=VARCHAR}, 
+      #{functionUrl,jdbcType=VARCHAR}, #{functionSort,jdbcType=VARCHAR}, #{functionIcon,jdbcType=VARCHAR}, 
+      #{menuId,jdbcType=BIGINT}, #{udf01,jdbcType=VARCHAR}, #{udf02,jdbcType=VARCHAR}, 
+      #{udf03,jdbcType=VARCHAR}, #{udf04,jdbcType=VARCHAR}, #{udf05,jdbcType=VARCHAR}, 
+      #{rd,jdbcType=VARCHAR}, #{activeFlag,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{createdBy,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{modifiedBy,jdbcType=VARCHAR}, 
+      #{modifiedDate,jdbcType=TIMESTAMP}, #{saasid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.my.ssm.sys.model.FunctionInf" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_function_inf
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="corpId != null" >
+        CORP_ID,
+      </if>
+      <if test="corp != null" >
+        CORP,
+      </if>
+      <if test="orgnId != null" >
+        ORGN_ID,
+      </if>
+      <if test="orgn != null" >
+        ORGN,
+      </if>
+      <if test="functionCode != null" >
+        FUNCTION_CODE,
+      </if>
+      <if test="functionName != null" >
+        FUNCTION_NAME,
+      </if>
+      <if test="functionUrl != null" >
+        FUNCTION_URL,
+      </if>
+      <if test="functionSort != null" >
+        FUNCTION_SORT,
+      </if>
+      <if test="functionIcon != null" >
+        FUNCTION_ICON,
+      </if>
+      <if test="menuId != null" >
+        MENU_ID,
+      </if>
+      <if test="udf01 != null" >
+        UDF01,
+      </if>
+      <if test="udf02 != null" >
+        UDF02,
+      </if>
+      <if test="udf03 != null" >
+        UDF03,
+      </if>
+      <if test="udf04 != null" >
+        UDF04,
+      </if>
+      <if test="udf05 != null" >
+        UDF05,
+      </if>
+      <if test="rd != null" >
+        RD,
+      </if>
+      <if test="activeFlag != null" >
+        ACTIVE_FLAG,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY,
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE,
+      </if>
+      <if test="modifiedBy != null" >
+        MODIFIED_BY,
+      </if>
+      <if test="modifiedDate != null" >
+        MODIFIED_DATE,
+      </if>
+      <if test="saasid != null" >
+        SAASID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="corpId != null" >
+        #{corpId,jdbcType=BIGINT},
+      </if>
+      <if test="corp != null" >
+        #{corp,jdbcType=VARCHAR},
+      </if>
+      <if test="orgnId != null" >
+        #{orgnId,jdbcType=BIGINT},
+      </if>
+      <if test="orgn != null" >
+        #{orgn,jdbcType=VARCHAR},
+      </if>
+      <if test="functionCode != null" >
+        #{functionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="functionName != null" >
+        #{functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="functionUrl != null" >
+        #{functionUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="functionSort != null" >
+        #{functionSort,jdbcType=VARCHAR},
+      </if>
+      <if test="functionIcon != null" >
+        #{functionIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="menuId != null" >
+        #{menuId,jdbcType=BIGINT},
+      </if>
+      <if test="udf01 != null" >
+        #{udf01,jdbcType=VARCHAR},
+      </if>
+      <if test="udf02 != null" >
+        #{udf02,jdbcType=VARCHAR},
+      </if>
+      <if test="udf03 != null" >
+        #{udf03,jdbcType=VARCHAR},
+      </if>
+      <if test="udf04 != null" >
+        #{udf04,jdbcType=VARCHAR},
+      </if>
+      <if test="udf05 != null" >
+        #{udf05,jdbcType=VARCHAR},
+      </if>
+      <if test="rd != null" >
+        #{rd,jdbcType=VARCHAR},
+      </if>
+      <if test="activeFlag != null" >
+        #{activeFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null" >
+        #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedDate != null" >
+        #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saasid != null" >
+        #{saasid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.my.ssm.sys.model.FunctionInf" >
+    update sys_function_inf
+    <set >
+      <if test="corpId != null" >
+        CORP_ID = #{corpId,jdbcType=BIGINT},
+      </if>
+      <if test="corp != null" >
+        CORP = #{corp,jdbcType=VARCHAR},
+      </if>
+      <if test="orgnId != null" >
+        ORGN_ID = #{orgnId,jdbcType=BIGINT},
+      </if>
+      <if test="orgn != null" >
+        ORGN = #{orgn,jdbcType=VARCHAR},
+      </if>
+      <if test="functionCode != null" >
+        FUNCTION_CODE = #{functionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="functionName != null" >
+        FUNCTION_NAME = #{functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="functionUrl != null" >
+        FUNCTION_URL = #{functionUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="functionSort != null" >
+        FUNCTION_SORT = #{functionSort,jdbcType=VARCHAR},
+      </if>
+      <if test="functionIcon != null" >
+        FUNCTION_ICON = #{functionIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="menuId != null" >
+        MENU_ID = #{menuId,jdbcType=BIGINT},
+      </if>
+      <if test="udf01 != null" >
+        UDF01 = #{udf01,jdbcType=VARCHAR},
+      </if>
+      <if test="udf02 != null" >
+        UDF02 = #{udf02,jdbcType=VARCHAR},
+      </if>
+      <if test="udf03 != null" >
+        UDF03 = #{udf03,jdbcType=VARCHAR},
+      </if>
+      <if test="udf04 != null" >
+        UDF04 = #{udf04,jdbcType=VARCHAR},
+      </if>
+      <if test="udf05 != null" >
+        UDF05 = #{udf05,jdbcType=VARCHAR},
+      </if>
+      <if test="rd != null" >
+        RD = #{rd,jdbcType=VARCHAR},
+      </if>
+      <if test="activeFlag != null" >
+        ACTIVE_FLAG = #{activeFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null" >
+        MODIFIED_BY = #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedDate != null" >
+        MODIFIED_DATE = #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saasid != null" >
+        SAASID = #{saasid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.my.ssm.sys.model.FunctionInf" >
+    update sys_function_inf
+    set CORP_ID = #{corpId,jdbcType=BIGINT},
+      CORP = #{corp,jdbcType=VARCHAR},
+      ORGN_ID = #{orgnId,jdbcType=BIGINT},
+      ORGN = #{orgn,jdbcType=VARCHAR},
+      FUNCTION_CODE = #{functionCode,jdbcType=VARCHAR},
+      FUNCTION_NAME = #{functionName,jdbcType=VARCHAR},
+      FUNCTION_URL = #{functionUrl,jdbcType=VARCHAR},
+      FUNCTION_SORT = #{functionSort,jdbcType=VARCHAR},
+      FUNCTION_ICON = #{functionIcon,jdbcType=VARCHAR},
+      MENU_ID = #{menuId,jdbcType=BIGINT},
+      UDF01 = #{udf01,jdbcType=VARCHAR},
+      UDF02 = #{udf02,jdbcType=VARCHAR},
+      UDF03 = #{udf03,jdbcType=VARCHAR},
+      UDF04 = #{udf04,jdbcType=VARCHAR},
+      UDF05 = #{udf05,jdbcType=VARCHAR},
+      RD = #{rd,jdbcType=VARCHAR},
+      ACTIVE_FLAG = #{activeFlag,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      MODIFIED_BY = #{modifiedBy,jdbcType=VARCHAR},
+      MODIFIED_DATE = #{modifiedDate,jdbcType=TIMESTAMP},
+      SAASID = #{saasid,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

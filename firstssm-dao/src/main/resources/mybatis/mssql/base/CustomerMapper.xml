@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.my.ssm.base.dao.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.my.ssm.base.model.Customer" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="CORP_ID" property="corpId" jdbcType="BIGINT" />
+    <result column="CORP" property="corp" jdbcType="NVARCHAR" />
+    <result column="ORGN_ID" property="orgnId" jdbcType="BIGINT" />
+    <result column="ORGN" property="orgn" jdbcType="NVARCHAR" />
+    <result column="CLS_ID" property="clsId" jdbcType="BIGINT" />
+    <result column="CLS_CODE" property="clsCode" jdbcType="NVARCHAR" />
+    <result column="CUS_CODE" property="cusCode" jdbcType="NVARCHAR" />
+    <result column="CUS_NAME" property="cusName" jdbcType="NVARCHAR" />
+    <result column="CUS_NAMEE" property="cusNamee" jdbcType="NVARCHAR" />
+    <result column="CUS_DESCR" property="cusDescr" jdbcType="NVARCHAR" />
+    <result column="CUS_DESCRE" property="cusDescre" jdbcType="NVARCHAR" />
+    <result column="EASY_CODE" property="easyCode" jdbcType="NVARCHAR" />
+    <result column="CUS_TYPE" property="cusType" jdbcType="NVARCHAR" />
+    <result column="COUNTRY" property="country" jdbcType="NVARCHAR" />
+    <result column="PROVINCE" property="province" jdbcType="NVARCHAR" />
+    <result column="CITY" property="city" jdbcType="NVARCHAR" />
+    <result column="DISTRICT" property="district" jdbcType="NVARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="NVARCHAR" />
+    <result column="FULL_ADDRESS" property="fullAddress" jdbcType="NVARCHAR" />
+    <result column="ZIP" property="zip" jdbcType="NVARCHAR" />
+    <result column="CONTACT" property="contact" jdbcType="NVARCHAR" />
+    <result column="CONTACT_TEL" property="contactTel" jdbcType="NVARCHAR" />
+    <result column="CONTACT_MOBILE" property="contactMobile" jdbcType="NVARCHAR" />
+    <result column="CONTACT_FAX" property="contactFax" jdbcType="NVARCHAR" />
+    <result column="CONTACT_TITLE" property="contactTitle" jdbcType="NVARCHAR" />
+    <result column="CONTACT_EMAIL" property="contactEmail" jdbcType="NVARCHAR" />
+    <result column="UDF01" property="udf01" jdbcType="NVARCHAR" />
+    <result column="UDF02" property="udf02" jdbcType="NVARCHAR" />
+    <result column="UDF03" property="udf03" jdbcType="NVARCHAR" />
+    <result column="UDF04" property="udf04" jdbcType="NVARCHAR" />
+    <result column="UDF05" property="udf05" jdbcType="NVARCHAR" />
+    <result column="UDF06" property="udf06" jdbcType="NVARCHAR" />
+    <result column="UDF07" property="udf07" jdbcType="NVARCHAR" />
+    <result column="UDF08" property="udf08" jdbcType="NVARCHAR" />
+    <result column="UDF09" property="udf09" jdbcType="NVARCHAR" />
+    <result column="UDF10" property="udf10" jdbcType="NVARCHAR" />
+    <result column="UDF11" property="udf11" jdbcType="DECIMAL" />
+    <result column="UDF12" property="udf12" jdbcType="DECIMAL" />
+    <result column="UDF13" property="udf13" jdbcType="DECIMAL" />
+    <result column="UDF14" property="udf14" jdbcType="DECIMAL" />
+    <result column="UDF15" property="udf15" jdbcType="DECIMAL" />
+    <result column="UDF16" property="udf16" jdbcType="INTEGER" />
+    <result column="UDF17" property="udf17" jdbcType="INTEGER" />
+    <result column="UDF18" property="udf18" jdbcType="INTEGER" />
+    <result column="UDF19" property="udf19" jdbcType="INTEGER" />
+    <result column="UDF20" property="udf20" jdbcType="INTEGER" />
+    <result column="UDF21" property="udf21" jdbcType="TIMESTAMP" />
+    <result column="UDF22" property="udf22" jdbcType="TIMESTAMP" />
+    <result column="UDF23" property="udf23" jdbcType="TIMESTAMP" />
+    <result column="UDF24" property="udf24" jdbcType="TIMESTAMP" />
+    <result column="UDF25" property="udf25" jdbcType="TIMESTAMP" />
+    <result column="TS" property="ts" jdbcType="TIMESTAMP" />
+    <result column="RD" property="rd" jdbcType="NVARCHAR" />
+    <result column="ACTIVE_FLAG" property="activeFlag" jdbcType="NVARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="NVARCHAR" />
+    <result column="CREATED_BY" property="createdBy" jdbcType="NVARCHAR" />
+    <result column="CREATED_DATE" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="MODIFIED_BY" property="modifiedBy" jdbcType="NVARCHAR" />
+    <result column="MODIFIED_DATE" property="modifiedDate" jdbcType="TIMESTAMP" />
+    <result column="SAASID" property="saasid" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CORP_ID, CORP, ORGN_ID, ORGN, CLS_ID, CLS_CODE, CUS_CODE, CUS_NAME, CUS_NAMEE, 
+    CUS_DESCR, CUS_DESCRE, EASY_CODE, CUS_TYPE, COUNTRY, PROVINCE, CITY, DISTRICT, ADDRESS, 
+    FULL_ADDRESS, ZIP, CONTACT, CONTACT_TEL, CONTACT_MOBILE, CONTACT_FAX, CONTACT_TITLE, 
+    CONTACT_EMAIL, UDF01, UDF02, UDF03, UDF04, UDF05, UDF06, UDF07, UDF08, UDF09, UDF10, 
+    UDF11, UDF12, UDF13, UDF14, UDF15, UDF16, UDF17, UDF18, UDF19, UDF20, UDF21, UDF22, 
+    UDF23, UDF24, UDF25, TS, RD, ACTIVE_FLAG, REMARK, CREATED_BY, CREATED_DATE, MODIFIED_BY, 
+    MODIFIED_DATE, SAASID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from dbo.BASE_CUSTOMER
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.BASE_CUSTOMER
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.my.ssm.base.model.Customer" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT @@IDENTITY
+    </selectKey>
+    insert into dbo.BASE_CUSTOMER (CORP_ID, CORP, ORGN_ID, 
+      ORGN, CLS_ID, CLS_CODE, 
+      CUS_CODE, CUS_NAME, CUS_NAMEE, 
+      CUS_DESCR, CUS_DESCRE, EASY_CODE, 
+      CUS_TYPE, COUNTRY, PROVINCE, 
+      CITY, DISTRICT, ADDRESS, 
+      FULL_ADDRESS, ZIP, CONTACT, 
+      CONTACT_TEL, CONTACT_MOBILE, CONTACT_FAX, 
+      CONTACT_TITLE, CONTACT_EMAIL, UDF01, 
+      UDF02, UDF03, UDF04, 
+      UDF05, UDF06, UDF07, 
+      UDF08, UDF09, UDF10, 
+      UDF11, UDF12, UDF13, 
+      UDF14, UDF15, UDF16, 
+      UDF17, UDF18, UDF19, 
+      UDF20, UDF21, UDF22, 
+      UDF23, UDF24, UDF25, 
+      TS, RD, ACTIVE_FLAG, 
+      REMARK, CREATED_BY, CREATED_DATE, 
+      MODIFIED_BY, MODIFIED_DATE, SAASID
+      )
+    values (#{corpId,jdbcType=BIGINT}, #{corp,jdbcType=NVARCHAR}, #{orgnId,jdbcType=BIGINT}, 
+      #{orgn,jdbcType=NVARCHAR}, #{clsId,jdbcType=BIGINT}, #{clsCode,jdbcType=NVARCHAR}, 
+      #{cusCode,jdbcType=NVARCHAR}, #{cusName,jdbcType=NVARCHAR}, #{cusNamee,jdbcType=NVARCHAR}, 
+      #{cusDescr,jdbcType=NVARCHAR}, #{cusDescre,jdbcType=NVARCHAR}, #{easyCode,jdbcType=NVARCHAR}, 
+      #{cusType,jdbcType=NVARCHAR}, #{country,jdbcType=NVARCHAR}, #{province,jdbcType=NVARCHAR}, 
+      #{city,jdbcType=NVARCHAR}, #{district,jdbcType=NVARCHAR}, #{address,jdbcType=NVARCHAR}, 
+      #{fullAddress,jdbcType=NVARCHAR}, #{zip,jdbcType=NVARCHAR}, #{contact,jdbcType=NVARCHAR}, 
+      #{contactTel,jdbcType=NVARCHAR}, #{contactMobile,jdbcType=NVARCHAR}, #{contactFax,jdbcType=NVARCHAR}, 
+      #{contactTitle,jdbcType=NVARCHAR}, #{contactEmail,jdbcType=NVARCHAR}, #{udf01,jdbcType=NVARCHAR}, 
+      #{udf02,jdbcType=NVARCHAR}, #{udf03,jdbcType=NVARCHAR}, #{udf04,jdbcType=NVARCHAR}, 
+      #{udf05,jdbcType=NVARCHAR}, #{udf06,jdbcType=NVARCHAR}, #{udf07,jdbcType=NVARCHAR}, 
+      #{udf08,jdbcType=NVARCHAR}, #{udf09,jdbcType=NVARCHAR}, #{udf10,jdbcType=NVARCHAR}, 
+      #{udf11,jdbcType=DECIMAL}, #{udf12,jdbcType=DECIMAL}, #{udf13,jdbcType=DECIMAL}, 
+      #{udf14,jdbcType=DECIMAL}, #{udf15,jdbcType=DECIMAL}, #{udf16,jdbcType=INTEGER}, 
+      #{udf17,jdbcType=INTEGER}, #{udf18,jdbcType=INTEGER}, #{udf19,jdbcType=INTEGER}, 
+      #{udf20,jdbcType=INTEGER}, #{udf21,jdbcType=TIMESTAMP}, #{udf22,jdbcType=TIMESTAMP}, 
+      #{udf23,jdbcType=TIMESTAMP}, #{udf24,jdbcType=TIMESTAMP}, #{udf25,jdbcType=TIMESTAMP}, 
+      #{ts,jdbcType=TIMESTAMP}, #{rd,jdbcType=NVARCHAR}, #{activeFlag,jdbcType=NVARCHAR}, 
+      #{remark,jdbcType=NVARCHAR}, #{createdBy,jdbcType=NVARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, 
+      #{modifiedBy,jdbcType=NVARCHAR}, #{modifiedDate,jdbcType=TIMESTAMP}, #{saasid,jdbcType=NVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.my.ssm.base.model.Customer" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT @@IDENTITY
+    </selectKey>
+    insert into dbo.BASE_CUSTOMER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="corpId != null" >
+        CORP_ID,
+      </if>
+      <if test="corp != null" >
+        CORP,
+      </if>
+      <if test="orgnId != null" >
+        ORGN_ID,
+      </if>
+      <if test="orgn != null" >
+        ORGN,
+      </if>
+      <if test="clsId != null" >
+        CLS_ID,
+      </if>
+      <if test="clsCode != null" >
+        CLS_CODE,
+      </if>
+      <if test="cusCode != null" >
+        CUS_CODE,
+      </if>
+      <if test="cusName != null" >
+        CUS_NAME,
+      </if>
+      <if test="cusNamee != null" >
+        CUS_NAMEE,
+      </if>
+      <if test="cusDescr != null" >
+        CUS_DESCR,
+      </if>
+      <if test="cusDescre != null" >
+        CUS_DESCRE,
+      </if>
+      <if test="easyCode != null" >
+        EASY_CODE,
+      </if>
+      <if test="cusType != null" >
+        CUS_TYPE,
+      </if>
+      <if test="country != null" >
+        COUNTRY,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="district != null" >
+        DISTRICT,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="fullAddress != null" >
+        FULL_ADDRESS,
+      </if>
+      <if test="zip != null" >
+        ZIP,
+      </if>
+      <if test="contact != null" >
+        CONTACT,
+      </if>
+      <if test="contactTel != null" >
+        CONTACT_TEL,
+      </if>
+      <if test="contactMobile != null" >
+        CONTACT_MOBILE,
+      </if>
+      <if test="contactFax != null" >
+        CONTACT_FAX,
+      </if>
+      <if test="contactTitle != null" >
+        CONTACT_TITLE,
+      </if>
+      <if test="contactEmail != null" >
+        CONTACT_EMAIL,
+      </if>
+      <if test="udf01 != null" >
+        UDF01,
+      </if>
+      <if test="udf02 != null" >
+        UDF02,
+      </if>
+      <if test="udf03 != null" >
+        UDF03,
+      </if>
+      <if test="udf04 != null" >
+        UDF04,
+      </if>
+      <if test="udf05 != null" >
+        UDF05,
+      </if>
+      <if test="udf06 != null" >
+        UDF06,
+      </if>
+      <if test="udf07 != null" >
+        UDF07,
+      </if>
+      <if test="udf08 != null" >
+        UDF08,
+      </if>
+      <if test="udf09 != null" >
+        UDF09,
+      </if>
+      <if test="udf10 != null" >
+        UDF10,
+      </if>
+      <if test="udf11 != null" >
+        UDF11,
+      </if>
+      <if test="udf12 != null" >
+        UDF12,
+      </if>
+      <if test="udf13 != null" >
+        UDF13,
+      </if>
+      <if test="udf14 != null" >
+        UDF14,
+      </if>
+      <if test="udf15 != null" >
+        UDF15,
+      </if>
+      <if test="udf16 != null" >
+        UDF16,
+      </if>
+      <if test="udf17 != null" >
+        UDF17,
+      </if>
+      <if test="udf18 != null" >
+        UDF18,
+      </if>
+      <if test="udf19 != null" >
+        UDF19,
+      </if>
+      <if test="udf20 != null" >
+        UDF20,
+      </if>
+      <if test="udf21 != null" >
+        UDF21,
+      </if>
+      <if test="udf22 != null" >
+        UDF22,
+      </if>
+      <if test="udf23 != null" >
+        UDF23,
+      </if>
+      <if test="udf24 != null" >
+        UDF24,
+      </if>
+      <if test="udf25 != null" >
+        UDF25,
+      </if>
+      <if test="ts != null" >
+        TS,
+      </if>
+      <if test="rd != null" >
+        RD,
+      </if>
+      <if test="activeFlag != null" >
+        ACTIVE_FLAG,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY,
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE,
+      </if>
+      <if test="modifiedBy != null" >
+        MODIFIED_BY,
+      </if>
+      <if test="modifiedDate != null" >
+        MODIFIED_DATE,
+      </if>
+      <if test="saasid != null" >
+        SAASID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="corpId != null" >
+        #{corpId,jdbcType=BIGINT},
+      </if>
+      <if test="corp != null" >
+        #{corp,jdbcType=NVARCHAR},
+      </if>
+      <if test="orgnId != null" >
+        #{orgnId,jdbcType=BIGINT},
+      </if>
+      <if test="orgn != null" >
+        #{orgn,jdbcType=NVARCHAR},
+      </if>
+      <if test="clsId != null" >
+        #{clsId,jdbcType=BIGINT},
+      </if>
+      <if test="clsCode != null" >
+        #{clsCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="cusCode != null" >
+        #{cusCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="cusName != null" >
+        #{cusName,jdbcType=NVARCHAR},
+      </if>
+      <if test="cusNamee != null" >
+        #{cusNamee,jdbcType=NVARCHAR},
+      </if>
+      <if test="cusDescr != null" >
+        #{cusDescr,jdbcType=NVARCHAR},
+      </if>
+      <if test="cusDescre != null" >
+        #{cusDescre,jdbcType=NVARCHAR},
+      </if>
+      <if test="easyCode != null" >
+        #{easyCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="cusType != null" >
+        #{cusType,jdbcType=NVARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=NVARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=NVARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=NVARCHAR},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=NVARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=NVARCHAR},
+      </if>
+      <if test="fullAddress != null" >
+        #{fullAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="zip != null" >
+        #{zip,jdbcType=NVARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=NVARCHAR},
+      </if>
+      <if test="contactTel != null" >
+        #{contactTel,jdbcType=NVARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        #{contactMobile,jdbcType=NVARCHAR},
+      </if>
+      <if test="contactFax != null" >
+        #{contactFax,jdbcType=NVARCHAR},
+      </if>
+      <if test="contactTitle != null" >
+        #{contactTitle,jdbcType=NVARCHAR},
+      </if>
+      <if test="contactEmail != null" >
+        #{contactEmail,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf01 != null" >
+        #{udf01,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf02 != null" >
+        #{udf02,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf03 != null" >
+        #{udf03,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf04 != null" >
+        #{udf04,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf05 != null" >
+        #{udf05,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf06 != null" >
+        #{udf06,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf07 != null" >
+        #{udf07,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf08 != null" >
+        #{udf08,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf09 != null" >
+        #{udf09,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf10 != null" >
+        #{udf10,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf11 != null" >
+        #{udf11,jdbcType=DECIMAL},
+      </if>
+      <if test="udf12 != null" >
+        #{udf12,jdbcType=DECIMAL},
+      </if>
+      <if test="udf13 != null" >
+        #{udf13,jdbcType=DECIMAL},
+      </if>
+      <if test="udf14 != null" >
+        #{udf14,jdbcType=DECIMAL},
+      </if>
+      <if test="udf15 != null" >
+        #{udf15,jdbcType=DECIMAL},
+      </if>
+      <if test="udf16 != null" >
+        #{udf16,jdbcType=INTEGER},
+      </if>
+      <if test="udf17 != null" >
+        #{udf17,jdbcType=INTEGER},
+      </if>
+      <if test="udf18 != null" >
+        #{udf18,jdbcType=INTEGER},
+      </if>
+      <if test="udf19 != null" >
+        #{udf19,jdbcType=INTEGER},
+      </if>
+      <if test="udf20 != null" >
+        #{udf20,jdbcType=INTEGER},
+      </if>
+      <if test="udf21 != null" >
+        #{udf21,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udf22 != null" >
+        #{udf22,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udf23 != null" >
+        #{udf23,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udf24 != null" >
+        #{udf24,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udf25 != null" >
+        #{udf25,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rd != null" >
+        #{rd,jdbcType=NVARCHAR},
+      </if>
+      <if test="activeFlag != null" >
+        #{activeFlag,jdbcType=NVARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null" >
+        #{modifiedBy,jdbcType=NVARCHAR},
+      </if>
+      <if test="modifiedDate != null" >
+        #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saasid != null" >
+        #{saasid,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.my.ssm.base.model.Customer" >
+    update dbo.BASE_CUSTOMER
+    <set >
+      <if test="corpId != null" >
+        CORP_ID = #{corpId,jdbcType=BIGINT},
+      </if>
+      <if test="corp != null" >
+        CORP = #{corp,jdbcType=NVARCHAR},
+      </if>
+      <if test="orgnId != null" >
+        ORGN_ID = #{orgnId,jdbcType=BIGINT},
+      </if>
+      <if test="orgn != null" >
+        ORGN = #{orgn,jdbcType=NVARCHAR},
+      </if>
+      <if test="clsId != null" >
+        CLS_ID = #{clsId,jdbcType=BIGINT},
+      </if>
+      <if test="clsCode != null" >
+        CLS_CODE = #{clsCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="cusCode != null" >
+        CUS_CODE = #{cusCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="cusName != null" >
+        CUS_NAME = #{cusName,jdbcType=NVARCHAR},
+      </if>
+      <if test="cusNamee != null" >
+        CUS_NAMEE = #{cusNamee,jdbcType=NVARCHAR},
+      </if>
+      <if test="cusDescr != null" >
+        CUS_DESCR = #{cusDescr,jdbcType=NVARCHAR},
+      </if>
+      <if test="cusDescre != null" >
+        CUS_DESCRE = #{cusDescre,jdbcType=NVARCHAR},
+      </if>
+      <if test="easyCode != null" >
+        EASY_CODE = #{easyCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="cusType != null" >
+        CUS_TYPE = #{cusType,jdbcType=NVARCHAR},
+      </if>
+      <if test="country != null" >
+        COUNTRY = #{country,jdbcType=NVARCHAR},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=NVARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=NVARCHAR},
+      </if>
+      <if test="district != null" >
+        DISTRICT = #{district,jdbcType=NVARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=NVARCHAR},
+      </if>
+      <if test="fullAddress != null" >
+        FULL_ADDRESS = #{fullAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="zip != null" >
+        ZIP = #{zip,jdbcType=NVARCHAR},
+      </if>
+      <if test="contact != null" >
+        CONTACT = #{contact,jdbcType=NVARCHAR},
+      </if>
+      <if test="contactTel != null" >
+        CONTACT_TEL = #{contactTel,jdbcType=NVARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        CONTACT_MOBILE = #{contactMobile,jdbcType=NVARCHAR},
+      </if>
+      <if test="contactFax != null" >
+        CONTACT_FAX = #{contactFax,jdbcType=NVARCHAR},
+      </if>
+      <if test="contactTitle != null" >
+        CONTACT_TITLE = #{contactTitle,jdbcType=NVARCHAR},
+      </if>
+      <if test="contactEmail != null" >
+        CONTACT_EMAIL = #{contactEmail,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf01 != null" >
+        UDF01 = #{udf01,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf02 != null" >
+        UDF02 = #{udf02,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf03 != null" >
+        UDF03 = #{udf03,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf04 != null" >
+        UDF04 = #{udf04,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf05 != null" >
+        UDF05 = #{udf05,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf06 != null" >
+        UDF06 = #{udf06,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf07 != null" >
+        UDF07 = #{udf07,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf08 != null" >
+        UDF08 = #{udf08,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf09 != null" >
+        UDF09 = #{udf09,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf10 != null" >
+        UDF10 = #{udf10,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf11 != null" >
+        UDF11 = #{udf11,jdbcType=DECIMAL},
+      </if>
+      <if test="udf12 != null" >
+        UDF12 = #{udf12,jdbcType=DECIMAL},
+      </if>
+      <if test="udf13 != null" >
+        UDF13 = #{udf13,jdbcType=DECIMAL},
+      </if>
+      <if test="udf14 != null" >
+        UDF14 = #{udf14,jdbcType=DECIMAL},
+      </if>
+      <if test="udf15 != null" >
+        UDF15 = #{udf15,jdbcType=DECIMAL},
+      </if>
+      <if test="udf16 != null" >
+        UDF16 = #{udf16,jdbcType=INTEGER},
+      </if>
+      <if test="udf17 != null" >
+        UDF17 = #{udf17,jdbcType=INTEGER},
+      </if>
+      <if test="udf18 != null" >
+        UDF18 = #{udf18,jdbcType=INTEGER},
+      </if>
+      <if test="udf19 != null" >
+        UDF19 = #{udf19,jdbcType=INTEGER},
+      </if>
+      <if test="udf20 != null" >
+        UDF20 = #{udf20,jdbcType=INTEGER},
+      </if>
+      <if test="udf21 != null" >
+        UDF21 = #{udf21,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udf22 != null" >
+        UDF22 = #{udf22,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udf23 != null" >
+        UDF23 = #{udf23,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udf24 != null" >
+        UDF24 = #{udf24,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udf25 != null" >
+        UDF25 = #{udf25,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ts != null" >
+        TS = #{ts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rd != null" >
+        RD = #{rd,jdbcType=NVARCHAR},
+      </if>
+      <if test="activeFlag != null" >
+        ACTIVE_FLAG = #{activeFlag,jdbcType=NVARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY = #{createdBy,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null" >
+        MODIFIED_BY = #{modifiedBy,jdbcType=NVARCHAR},
+      </if>
+      <if test="modifiedDate != null" >
+        MODIFIED_DATE = #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saasid != null" >
+        SAASID = #{saasid,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.my.ssm.base.model.Customer" >
+    update dbo.BASE_CUSTOMER
+    set CORP_ID = #{corpId,jdbcType=BIGINT},
+      CORP = #{corp,jdbcType=NVARCHAR},
+      ORGN_ID = #{orgnId,jdbcType=BIGINT},
+      ORGN = #{orgn,jdbcType=NVARCHAR},
+      CLS_ID = #{clsId,jdbcType=BIGINT},
+      CLS_CODE = #{clsCode,jdbcType=NVARCHAR},
+      CUS_CODE = #{cusCode,jdbcType=NVARCHAR},
+      CUS_NAME = #{cusName,jdbcType=NVARCHAR},
+      CUS_NAMEE = #{cusNamee,jdbcType=NVARCHAR},
+      CUS_DESCR = #{cusDescr,jdbcType=NVARCHAR},
+      CUS_DESCRE = #{cusDescre,jdbcType=NVARCHAR},
+      EASY_CODE = #{easyCode,jdbcType=NVARCHAR},
+      CUS_TYPE = #{cusType,jdbcType=NVARCHAR},
+      COUNTRY = #{country,jdbcType=NVARCHAR},
+      PROVINCE = #{province,jdbcType=NVARCHAR},
+      CITY = #{city,jdbcType=NVARCHAR},
+      DISTRICT = #{district,jdbcType=NVARCHAR},
+      ADDRESS = #{address,jdbcType=NVARCHAR},
+      FULL_ADDRESS = #{fullAddress,jdbcType=NVARCHAR},
+      ZIP = #{zip,jdbcType=NVARCHAR},
+      CONTACT = #{contact,jdbcType=NVARCHAR},
+      CONTACT_TEL = #{contactTel,jdbcType=NVARCHAR},
+      CONTACT_MOBILE = #{contactMobile,jdbcType=NVARCHAR},
+      CONTACT_FAX = #{contactFax,jdbcType=NVARCHAR},
+      CONTACT_TITLE = #{contactTitle,jdbcType=NVARCHAR},
+      CONTACT_EMAIL = #{contactEmail,jdbcType=NVARCHAR},
+      UDF01 = #{udf01,jdbcType=NVARCHAR},
+      UDF02 = #{udf02,jdbcType=NVARCHAR},
+      UDF03 = #{udf03,jdbcType=NVARCHAR},
+      UDF04 = #{udf04,jdbcType=NVARCHAR},
+      UDF05 = #{udf05,jdbcType=NVARCHAR},
+      UDF06 = #{udf06,jdbcType=NVARCHAR},
+      UDF07 = #{udf07,jdbcType=NVARCHAR},
+      UDF08 = #{udf08,jdbcType=NVARCHAR},
+      UDF09 = #{udf09,jdbcType=NVARCHAR},
+      UDF10 = #{udf10,jdbcType=NVARCHAR},
+      UDF11 = #{udf11,jdbcType=DECIMAL},
+      UDF12 = #{udf12,jdbcType=DECIMAL},
+      UDF13 = #{udf13,jdbcType=DECIMAL},
+      UDF14 = #{udf14,jdbcType=DECIMAL},
+      UDF15 = #{udf15,jdbcType=DECIMAL},
+      UDF16 = #{udf16,jdbcType=INTEGER},
+      UDF17 = #{udf17,jdbcType=INTEGER},
+      UDF18 = #{udf18,jdbcType=INTEGER},
+      UDF19 = #{udf19,jdbcType=INTEGER},
+      UDF20 = #{udf20,jdbcType=INTEGER},
+      UDF21 = #{udf21,jdbcType=TIMESTAMP},
+      UDF22 = #{udf22,jdbcType=TIMESTAMP},
+      UDF23 = #{udf23,jdbcType=TIMESTAMP},
+      UDF24 = #{udf24,jdbcType=TIMESTAMP},
+      UDF25 = #{udf25,jdbcType=TIMESTAMP},
+      TS = #{ts,jdbcType=TIMESTAMP},
+      RD = #{rd,jdbcType=NVARCHAR},
+      ACTIVE_FLAG = #{activeFlag,jdbcType=NVARCHAR},
+      REMARK = #{remark,jdbcType=NVARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=NVARCHAR},
+      CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      MODIFIED_BY = #{modifiedBy,jdbcType=NVARCHAR},
+      MODIFIED_DATE = #{modifiedDate,jdbcType=TIMESTAMP},
+      SAASID = #{saasid,jdbcType=NVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

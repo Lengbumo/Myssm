@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"  
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context    
+    http://www.springframework.org/schema/context/spring-context-3.1.xsd ">
+
+	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->  
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis/mybatis-config.xml" />
+		<!-- 自动扫描mapping.xml文件 -->
+		<property name="mapperLocations">
+			<list>
+                <!-- <value>classpath*:mybatis/${jdbc.databaseType}/base/*.xml</value>
+                <value>classpath*:mybatis/custom/${jdbc.databaseType}/base/*.xml</value> -->
+                <value>classpath*:mybatis/${jdbc.databaseType}/*/*.xml</value>
+                <value>classpath*:mybatis/custom/${jdbc.databaseType}/*/*.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- <bean id="baseMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" abstract="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean> -->
+	
+	<!-- 没必要去指 定 SqlSessionFactory,因 为 MapperScannerConfigurer将会创建 MapperFactoryBean之后自动装配 -->
+	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+        <property name="basePackage" value="com.my.ssm.*.dao" />  
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
+    </bean>
+    
+    <!-- 自动扫描service -->
+    <context:component-scan base-package="com.my.ssm.*.service" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+	</context:component-scan>
+    
+</beans>

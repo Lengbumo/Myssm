@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.my.ssm.sys.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.my.ssm.sys.model.User" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="CORP_ID" property="corpId" jdbcType="BIGINT" />
+    <result column="CORP" property="corp" jdbcType="NVARCHAR" />
+    <result column="ORGN_ID" property="orgnId" jdbcType="BIGINT" />
+    <result column="ORGN" property="orgn" jdbcType="NVARCHAR" />
+    <result column="USER_CODE" property="userCode" jdbcType="NVARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="NVARCHAR" />
+    <result column="USER_ENAME" property="userEname" jdbcType="NVARCHAR" />
+    <result column="USER_DESCR" property="userDescr" jdbcType="NVARCHAR" />
+    <result column="DEP_ID" property="depId" jdbcType="BIGINT" />
+    <result column="DEP_CODE" property="depCode" jdbcType="NVARCHAR" />
+    <result column="EMP_ID" property="empId" jdbcType="BIGINT" />
+    <result column="EMP_CODE" property="empCode" jdbcType="NVARCHAR" />
+    <result column="TEL" property="tel" jdbcType="NVARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="NVARCHAR" />
+    <result column="EMIAL" property="emial" jdbcType="NVARCHAR" />
+    <result column="OTHERS" property="others" jdbcType="NVARCHAR" />
+    <result column="DEF_LANGUAGE" property="defLanguage" jdbcType="NVARCHAR" />
+    <result column="USER_TYPE" property="userType" jdbcType="NVARCHAR" />
+    <result column="ADMIN_FLAG" property="adminFlag" jdbcType="NVARCHAR" />
+    <result column="PC_PASSWORD" property="pcPassword" jdbcType="NVARCHAR" />
+    <result column="RF_PASSWORD" property="rfPassword" jdbcType="NVARCHAR" />
+    <result column="SALT" property="salt" jdbcType="NVARCHAR" />
+    <result column="AF_PC" property="afPc" jdbcType="NVARCHAR" />
+    <result column="AF_APP" property="afApp" jdbcType="NVARCHAR" />
+    <result column="EFF_DATE" property="effDate" jdbcType="DATE" />
+    <result column="END_DATE" property="endDate" jdbcType="DATE" />
+    <result column="PWD_MODIFY_DATE" property="pwdModifyDate" jdbcType="TIMESTAMP" />
+    <result column="PWD_CYCLE" property="pwdCycle" jdbcType="INTEGER" />
+    <result column="PWD_REST_FLAG" property="pwdRestFlag" jdbcType="NVARCHAR" />
+    <result column="LAST_DATE" property="lastDate" jdbcType="TIMESTAMP" />
+    <result column="FACE_IMG" property="faceImg" jdbcType="NVARCHAR" />
+    <result column="UDF01" property="udf01" jdbcType="NVARCHAR" />
+    <result column="UDF02" property="udf02" jdbcType="NVARCHAR" />
+    <result column="UDF03" property="udf03" jdbcType="NVARCHAR" />
+    <result column="UDF04" property="udf04" jdbcType="NVARCHAR" />
+    <result column="UDF05" property="udf05" jdbcType="NVARCHAR" />
+    <result column="RD" property="rd" jdbcType="NVARCHAR" />
+    <result column="ACTIVE_FLAG" property="activeFlag" jdbcType="NVARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="NVARCHAR" />
+    <result column="CREATED_BY" property="createdBy" jdbcType="NVARCHAR" />
+    <result column="CREATED_DATE" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="MODIFIED_BY" property="modifiedBy" jdbcType="NVARCHAR" />
+    <result column="MODIFIED_DATE" property="modifiedDate" jdbcType="TIMESTAMP" />
+    <result column="SAASID" property="saasid" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CORP_ID, CORP, ORGN_ID, ORGN, USER_CODE, USER_NAME, USER_ENAME, USER_DESCR, DEP_ID, 
+    DEP_CODE, EMP_ID, EMP_CODE, TEL, PHONE, EMIAL, OTHERS, DEF_LANGUAGE, USER_TYPE, ADMIN_FLAG, 
+    PC_PASSWORD, RF_PASSWORD, SALT, AF_PC, AF_APP, EFF_DATE, END_DATE, PWD_MODIFY_DATE, 
+    PWD_CYCLE, PWD_REST_FLAG, LAST_DATE, FACE_IMG, UDF01, UDF02, UDF03, UDF04, UDF05, 
+    RD, ACTIVE_FLAG, REMARK, CREATED_BY, CREATED_DATE, MODIFIED_BY, MODIFIED_DATE, SAASID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from dbo.SYS_USER
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dbo.SYS_USER
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.my.ssm.sys.model.User" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT @@IDENTITY
+    </selectKey>
+    insert into dbo.SYS_USER (CORP_ID, CORP, ORGN_ID, 
+      ORGN, USER_CODE, USER_NAME, 
+      USER_ENAME, USER_DESCR, DEP_ID, 
+      DEP_CODE, EMP_ID, EMP_CODE, 
+      TEL, PHONE, EMIAL, 
+      OTHERS, DEF_LANGUAGE, USER_TYPE, 
+      ADMIN_FLAG, PC_PASSWORD, RF_PASSWORD, 
+      SALT, AF_PC, AF_APP, 
+      EFF_DATE, END_DATE, PWD_MODIFY_DATE, 
+      PWD_CYCLE, PWD_REST_FLAG, LAST_DATE, 
+      FACE_IMG, UDF01, UDF02, 
+      UDF03, UDF04, UDF05, 
+      RD, ACTIVE_FLAG, REMARK, 
+      CREATED_BY, CREATED_DATE, MODIFIED_BY, 
+      MODIFIED_DATE, SAASID)
+    values (#{corpId,jdbcType=BIGINT}, #{corp,jdbcType=NVARCHAR}, #{orgnId,jdbcType=BIGINT}, 
+      #{orgn,jdbcType=NVARCHAR}, #{userCode,jdbcType=NVARCHAR}, #{userName,jdbcType=NVARCHAR}, 
+      #{userEname,jdbcType=NVARCHAR}, #{userDescr,jdbcType=NVARCHAR}, #{depId,jdbcType=BIGINT}, 
+      #{depCode,jdbcType=NVARCHAR}, #{empId,jdbcType=BIGINT}, #{empCode,jdbcType=NVARCHAR}, 
+      #{tel,jdbcType=NVARCHAR}, #{phone,jdbcType=NVARCHAR}, #{emial,jdbcType=NVARCHAR}, 
+      #{others,jdbcType=NVARCHAR}, #{defLanguage,jdbcType=NVARCHAR}, #{userType,jdbcType=NVARCHAR}, 
+      #{adminFlag,jdbcType=NVARCHAR}, #{pcPassword,jdbcType=NVARCHAR}, #{rfPassword,jdbcType=NVARCHAR}, 
+      #{salt,jdbcType=NVARCHAR}, #{afPc,jdbcType=NVARCHAR}, #{afApp,jdbcType=NVARCHAR}, 
+      #{effDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, #{pwdModifyDate,jdbcType=TIMESTAMP}, 
+      #{pwdCycle,jdbcType=INTEGER}, #{pwdRestFlag,jdbcType=NVARCHAR}, #{lastDate,jdbcType=TIMESTAMP}, 
+      #{faceImg,jdbcType=NVARCHAR}, #{udf01,jdbcType=NVARCHAR}, #{udf02,jdbcType=NVARCHAR}, 
+      #{udf03,jdbcType=NVARCHAR}, #{udf04,jdbcType=NVARCHAR}, #{udf05,jdbcType=NVARCHAR}, 
+      #{rd,jdbcType=NVARCHAR}, #{activeFlag,jdbcType=NVARCHAR}, #{remark,jdbcType=NVARCHAR}, 
+      #{createdBy,jdbcType=NVARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{modifiedBy,jdbcType=NVARCHAR}, 
+      #{modifiedDate,jdbcType=TIMESTAMP}, #{saasid,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.my.ssm.sys.model.User" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT @@IDENTITY
+    </selectKey>
+    insert into dbo.SYS_USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="corpId != null" >
+        CORP_ID,
+      </if>
+      <if test="corp != null" >
+        CORP,
+      </if>
+      <if test="orgnId != null" >
+        ORGN_ID,
+      </if>
+      <if test="orgn != null" >
+        ORGN,
+      </if>
+      <if test="userCode != null" >
+        USER_CODE,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="userEname != null" >
+        USER_ENAME,
+      </if>
+      <if test="userDescr != null" >
+        USER_DESCR,
+      </if>
+      <if test="depId != null" >
+        DEP_ID,
+      </if>
+      <if test="depCode != null" >
+        DEP_CODE,
+      </if>
+      <if test="empId != null" >
+        EMP_ID,
+      </if>
+      <if test="empCode != null" >
+        EMP_CODE,
+      </if>
+      <if test="tel != null" >
+        TEL,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="emial != null" >
+        EMIAL,
+      </if>
+      <if test="others != null" >
+        OTHERS,
+      </if>
+      <if test="defLanguage != null" >
+        DEF_LANGUAGE,
+      </if>
+      <if test="userType != null" >
+        USER_TYPE,
+      </if>
+      <if test="adminFlag != null" >
+        ADMIN_FLAG,
+      </if>
+      <if test="pcPassword != null" >
+        PC_PASSWORD,
+      </if>
+      <if test="rfPassword != null" >
+        RF_PASSWORD,
+      </if>
+      <if test="salt != null" >
+        SALT,
+      </if>
+      <if test="afPc != null" >
+        AF_PC,
+      </if>
+      <if test="afApp != null" >
+        AF_APP,
+      </if>
+      <if test="effDate != null" >
+        EFF_DATE,
+      </if>
+      <if test="endDate != null" >
+        END_DATE,
+      </if>
+      <if test="pwdModifyDate != null" >
+        PWD_MODIFY_DATE,
+      </if>
+      <if test="pwdCycle != null" >
+        PWD_CYCLE,
+      </if>
+      <if test="pwdRestFlag != null" >
+        PWD_REST_FLAG,
+      </if>
+      <if test="lastDate != null" >
+        LAST_DATE,
+      </if>
+      <if test="faceImg != null" >
+        FACE_IMG,
+      </if>
+      <if test="udf01 != null" >
+        UDF01,
+      </if>
+      <if test="udf02 != null" >
+        UDF02,
+      </if>
+      <if test="udf03 != null" >
+        UDF03,
+      </if>
+      <if test="udf04 != null" >
+        UDF04,
+      </if>
+      <if test="udf05 != null" >
+        UDF05,
+      </if>
+      <if test="rd != null" >
+        RD,
+      </if>
+      <if test="activeFlag != null" >
+        ACTIVE_FLAG,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY,
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE,
+      </if>
+      <if test="modifiedBy != null" >
+        MODIFIED_BY,
+      </if>
+      <if test="modifiedDate != null" >
+        MODIFIED_DATE,
+      </if>
+      <if test="saasid != null" >
+        SAASID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="corpId != null" >
+        #{corpId,jdbcType=BIGINT},
+      </if>
+      <if test="corp != null" >
+        #{corp,jdbcType=NVARCHAR},
+      </if>
+      <if test="orgnId != null" >
+        #{orgnId,jdbcType=BIGINT},
+      </if>
+      <if test="orgn != null" >
+        #{orgn,jdbcType=NVARCHAR},
+      </if>
+      <if test="userCode != null" >
+        #{userCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=NVARCHAR},
+      </if>
+      <if test="userEname != null" >
+        #{userEname,jdbcType=NVARCHAR},
+      </if>
+      <if test="userDescr != null" >
+        #{userDescr,jdbcType=NVARCHAR},
+      </if>
+      <if test="depId != null" >
+        #{depId,jdbcType=BIGINT},
+      </if>
+      <if test="depCode != null" >
+        #{depCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="empId != null" >
+        #{empId,jdbcType=BIGINT},
+      </if>
+      <if test="empCode != null" >
+        #{empCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=NVARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=NVARCHAR},
+      </if>
+      <if test="emial != null" >
+        #{emial,jdbcType=NVARCHAR},
+      </if>
+      <if test="others != null" >
+        #{others,jdbcType=NVARCHAR},
+      </if>
+      <if test="defLanguage != null" >
+        #{defLanguage,jdbcType=NVARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=NVARCHAR},
+      </if>
+      <if test="adminFlag != null" >
+        #{adminFlag,jdbcType=NVARCHAR},
+      </if>
+      <if test="pcPassword != null" >
+        #{pcPassword,jdbcType=NVARCHAR},
+      </if>
+      <if test="rfPassword != null" >
+        #{rfPassword,jdbcType=NVARCHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=NVARCHAR},
+      </if>
+      <if test="afPc != null" >
+        #{afPc,jdbcType=NVARCHAR},
+      </if>
+      <if test="afApp != null" >
+        #{afApp,jdbcType=NVARCHAR},
+      </if>
+      <if test="effDate != null" >
+        #{effDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="pwdModifyDate != null" >
+        #{pwdModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pwdCycle != null" >
+        #{pwdCycle,jdbcType=INTEGER},
+      </if>
+      <if test="pwdRestFlag != null" >
+        #{pwdRestFlag,jdbcType=NVARCHAR},
+      </if>
+      <if test="lastDate != null" >
+        #{lastDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="faceImg != null" >
+        #{faceImg,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf01 != null" >
+        #{udf01,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf02 != null" >
+        #{udf02,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf03 != null" >
+        #{udf03,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf04 != null" >
+        #{udf04,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf05 != null" >
+        #{udf05,jdbcType=NVARCHAR},
+      </if>
+      <if test="rd != null" >
+        #{rd,jdbcType=NVARCHAR},
+      </if>
+      <if test="activeFlag != null" >
+        #{activeFlag,jdbcType=NVARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null" >
+        #{modifiedBy,jdbcType=NVARCHAR},
+      </if>
+      <if test="modifiedDate != null" >
+        #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saasid != null" >
+        #{saasid,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.my.ssm.sys.model.User" >
+    update dbo.SYS_USER
+    <set >
+      <if test="corpId != null" >
+        CORP_ID = #{corpId,jdbcType=BIGINT},
+      </if>
+      <if test="corp != null" >
+        CORP = #{corp,jdbcType=NVARCHAR},
+      </if>
+      <if test="orgnId != null" >
+        ORGN_ID = #{orgnId,jdbcType=BIGINT},
+      </if>
+      <if test="orgn != null" >
+        ORGN = #{orgn,jdbcType=NVARCHAR},
+      </if>
+      <if test="userCode != null" >
+        USER_CODE = #{userCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=NVARCHAR},
+      </if>
+      <if test="userEname != null" >
+        USER_ENAME = #{userEname,jdbcType=NVARCHAR},
+      </if>
+      <if test="userDescr != null" >
+        USER_DESCR = #{userDescr,jdbcType=NVARCHAR},
+      </if>
+      <if test="depId != null" >
+        DEP_ID = #{depId,jdbcType=BIGINT},
+      </if>
+      <if test="depCode != null" >
+        DEP_CODE = #{depCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="empId != null" >
+        EMP_ID = #{empId,jdbcType=BIGINT},
+      </if>
+      <if test="empCode != null" >
+        EMP_CODE = #{empCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="tel != null" >
+        TEL = #{tel,jdbcType=NVARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=NVARCHAR},
+      </if>
+      <if test="emial != null" >
+        EMIAL = #{emial,jdbcType=NVARCHAR},
+      </if>
+      <if test="others != null" >
+        OTHERS = #{others,jdbcType=NVARCHAR},
+      </if>
+      <if test="defLanguage != null" >
+        DEF_LANGUAGE = #{defLanguage,jdbcType=NVARCHAR},
+      </if>
+      <if test="userType != null" >
+        USER_TYPE = #{userType,jdbcType=NVARCHAR},
+      </if>
+      <if test="adminFlag != null" >
+        ADMIN_FLAG = #{adminFlag,jdbcType=NVARCHAR},
+      </if>
+      <if test="pcPassword != null" >
+        PC_PASSWORD = #{pcPassword,jdbcType=NVARCHAR},
+      </if>
+      <if test="rfPassword != null" >
+        RF_PASSWORD = #{rfPassword,jdbcType=NVARCHAR},
+      </if>
+      <if test="salt != null" >
+        SALT = #{salt,jdbcType=NVARCHAR},
+      </if>
+      <if test="afPc != null" >
+        AF_PC = #{afPc,jdbcType=NVARCHAR},
+      </if>
+      <if test="afApp != null" >
+        AF_APP = #{afApp,jdbcType=NVARCHAR},
+      </if>
+      <if test="effDate != null" >
+        EFF_DATE = #{effDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        END_DATE = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="pwdModifyDate != null" >
+        PWD_MODIFY_DATE = #{pwdModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pwdCycle != null" >
+        PWD_CYCLE = #{pwdCycle,jdbcType=INTEGER},
+      </if>
+      <if test="pwdRestFlag != null" >
+        PWD_REST_FLAG = #{pwdRestFlag,jdbcType=NVARCHAR},
+      </if>
+      <if test="lastDate != null" >
+        LAST_DATE = #{lastDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="faceImg != null" >
+        FACE_IMG = #{faceImg,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf01 != null" >
+        UDF01 = #{udf01,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf02 != null" >
+        UDF02 = #{udf02,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf03 != null" >
+        UDF03 = #{udf03,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf04 != null" >
+        UDF04 = #{udf04,jdbcType=NVARCHAR},
+      </if>
+      <if test="udf05 != null" >
+        UDF05 = #{udf05,jdbcType=NVARCHAR},
+      </if>
+      <if test="rd != null" >
+        RD = #{rd,jdbcType=NVARCHAR},
+      </if>
+      <if test="activeFlag != null" >
+        ACTIVE_FLAG = #{activeFlag,jdbcType=NVARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY = #{createdBy,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null" >
+        MODIFIED_BY = #{modifiedBy,jdbcType=NVARCHAR},
+      </if>
+      <if test="modifiedDate != null" >
+        MODIFIED_DATE = #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saasid != null" >
+        SAASID = #{saasid,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.my.ssm.sys.model.User" >
+    update dbo.SYS_USER
+    set CORP_ID = #{corpId,jdbcType=BIGINT},
+      CORP = #{corp,jdbcType=NVARCHAR},
+      ORGN_ID = #{orgnId,jdbcType=BIGINT},
+      ORGN = #{orgn,jdbcType=NVARCHAR},
+      USER_CODE = #{userCode,jdbcType=NVARCHAR},
+      USER_NAME = #{userName,jdbcType=NVARCHAR},
+      USER_ENAME = #{userEname,jdbcType=NVARCHAR},
+      USER_DESCR = #{userDescr,jdbcType=NVARCHAR},
+      DEP_ID = #{depId,jdbcType=BIGINT},
+      DEP_CODE = #{depCode,jdbcType=NVARCHAR},
+      EMP_ID = #{empId,jdbcType=BIGINT},
+      EMP_CODE = #{empCode,jdbcType=NVARCHAR},
+      TEL = #{tel,jdbcType=NVARCHAR},
+      PHONE = #{phone,jdbcType=NVARCHAR},
+      EMIAL = #{emial,jdbcType=NVARCHAR},
+      OTHERS = #{others,jdbcType=NVARCHAR},
+      DEF_LANGUAGE = #{defLanguage,jdbcType=NVARCHAR},
+      USER_TYPE = #{userType,jdbcType=NVARCHAR},
+      ADMIN_FLAG = #{adminFlag,jdbcType=NVARCHAR},
+      PC_PASSWORD = #{pcPassword,jdbcType=NVARCHAR},
+      RF_PASSWORD = #{rfPassword,jdbcType=NVARCHAR},
+      SALT = #{salt,jdbcType=NVARCHAR},
+      AF_PC = #{afPc,jdbcType=NVARCHAR},
+      AF_APP = #{afApp,jdbcType=NVARCHAR},
+      EFF_DATE = #{effDate,jdbcType=DATE},
+      END_DATE = #{endDate,jdbcType=DATE},
+      PWD_MODIFY_DATE = #{pwdModifyDate,jdbcType=TIMESTAMP},
+      PWD_CYCLE = #{pwdCycle,jdbcType=INTEGER},
+      PWD_REST_FLAG = #{pwdRestFlag,jdbcType=NVARCHAR},
+      LAST_DATE = #{lastDate,jdbcType=TIMESTAMP},
+      FACE_IMG = #{faceImg,jdbcType=NVARCHAR},
+      UDF01 = #{udf01,jdbcType=NVARCHAR},
+      UDF02 = #{udf02,jdbcType=NVARCHAR},
+      UDF03 = #{udf03,jdbcType=NVARCHAR},
+      UDF04 = #{udf04,jdbcType=NVARCHAR},
+      UDF05 = #{udf05,jdbcType=NVARCHAR},
+      RD = #{rd,jdbcType=NVARCHAR},
+      ACTIVE_FLAG = #{activeFlag,jdbcType=NVARCHAR},
+      REMARK = #{remark,jdbcType=NVARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=NVARCHAR},
+      CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      MODIFIED_BY = #{modifiedBy,jdbcType=NVARCHAR},
+      MODIFIED_DATE = #{modifiedDate,jdbcType=TIMESTAMP},
+      SAASID = #{saasid,jdbcType=NVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

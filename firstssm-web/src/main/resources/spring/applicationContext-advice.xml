@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<!-- 正则表达式定义切入点 -->
+	<bean name="dao.pointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+		<property name="mappedNames">
+			<array>
+				<value>insert*</value>
+				<value>update*</value>
+			</array>
+		</property>
+	</bean>
+	<bean name="service.pointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+		<property name="mappedName" value="*" />
+	</bean>
+
+	<!-- advice通知 -->
+	<bean name="dao.advice" class="com.my.ssm.core.advice.DaoBeforeAdvice" />
+	<bean name="service.advice" class="com.my.ssm.core.advice.ServiceBeforeAdvice" />
+
+	<!-- 切入点adviser -->
+	<bean name="dao.advisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="dao.advice" />
+		<!-- pointcut的值可使用正则表达式精确指定切入点 ,将相应方法设为切入点 -->
+		<property name="pointcut" ref="dao.pointcut" />
+	</bean>
+	<bean name="service.advisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="service.advice" />
+		<property name="pointcut" ref="service.pointcut" />
+	</bean>
+
+	<!-- 代理对象 返回实例是目标对象 -->
+	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+				<value>*Mapper</value>
+			</list>
+		</property>
+		<!--源码内固定的属性private String[] interceptorNames;  -->
+		<property name="interceptorNames">
+			<list>
+				<value>dao.advisor</value>
+			</list>
+		</property>
+	</bean>
+	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+				<value>*Service</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>service.advisor</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>

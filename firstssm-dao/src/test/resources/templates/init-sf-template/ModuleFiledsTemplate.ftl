@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+<#list _dataList as data>
+	<sys_module_fileds id="${data.id!''}" module_code="${data.module!''}" menu_code="${data.menu!''}" area_code="${data.area!''}" field_code="${data.filedCode!''}" field_db_code="${data.filedDbCode!''}" field_db_name="${data.descr!''}" field_name="${data.descr!''}" field_ename="" descr="${data.descr!''}" show_seq="${data.showSeq!''}" width="${data.width!'100'}" active_flag="${data.activeFlag!''}" file_type="${data.fileType!''}" target="${data.target!''}" code_id="${data.codeId!''}" calc_vl="${data.calcVl!''}" formatter="${data.formatter!''}" formatter_js="${data.formatterJs!''}" editor="${data.editor!''}" editor_js="${data.editorJs!''}" styler="${data.styler!''}" styler_js="${data.stylerJs!''}" align="${data.align!'left'}" halign="${data.halign!'left'}" sortable="${data.sortable!'Y'}" orders="${data.orders!'ASC'}" frozen="${data.frozen!'N'}" resizable="${data.resizable!'Y'}" fixed="${data.fixed!'Y'}" def_value="${data.defValue!''}" def_length="${data.defLength!''}" lable_i18n="${data.lableI18n!''}" exp_flag="${data.expFlag!'Y'}" link_descr="${data.linkDescr!''}" link_url="${data.linkUrl!''}" link_params="${data.linkParams!''}" udf01="${data.udf01!''}" udf02="${data.udf02!'Y'}" udf03="${data.udf03!''}" udf04="${data.udf04!''}" udf05="${data.udf05!''}" rd="${data.rd}" remark="${data.remark!''}" created_by="${data.createdBy!''}" created_date="${data.createdDate!''}" modified_by="${data.modifiedBy!''}" modified_date="${data.modifiedDate!''}" saasid="${data.saasid!'0'}" />
+</#list>
+	
+</dataset>

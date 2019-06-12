@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-autowire="byName">
+
+	<bean id="securityFilter" class="com.my.ssm.ctl.sec.filter.SecurityFilter">
+		<property name="loginUrl" value="/myssm/login" />
+		<property name="homePageUrl" value="/myssm/manager/index" />
+		<property name="secUrl" value="/myssm/manager" />
+		<property name="patterns">
+			<map>
+				<entry key="/myssm/manager/**" value="ADMIN" />
+			</map>
+		</property>
+		<property name="omap">
+			<map>
+				<entry key="toEdit" value="toEdit" />
+				<entry key="toView" value="toCopy" />
+			</map>
+		</property>
+		<property name="excludes">
+			<list>
+				<value>/myssm/login</value>
+				<value>/myssm/login/in</value>
+				<value>/myssm/getRadomCode</value>
+				<value>/myssm/about</value>
+				<value>/myssm/test</value>
+				<!-- swagger2 -->
+				<value>/myssm/swagger</value>
+				<value>/v2/api-docs</value>
+			</list>
+		</property>
+		<property name="assets">
+			<list>
+				<value>/assets/**</value>
+				<value>/static/**</value>
+				<value>/upload/**</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="exceptionTranslationFilter" class="org.springframework.security.web.access.ExceptionTranslationFilter">
+		<constructor-arg ref="authenticationEntryPoint" />
+	</bean>
+	<bean id="authenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+		<constructor-arg value="/login" />
+	</bean>
+
+</beans>
+
+
